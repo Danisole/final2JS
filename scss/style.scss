@@ -146,20 +146,50 @@ body{
     }
 
     .mediaContain{
-        background-image: url(./assets2/imagMedia.jpg);
-        background-size: cover;
-        background-position: center center;
+        background-color: rgba(191,157,129,1);
         height: 1000px;
         width: auto;
+        @include section(flex, center, center);
+        flex-direction: row;
+
+        .h2Media{
+            background-color: black;
+            color: #f8f9fa;
+            @include body(100px, 300px);
+            z-index: 10;
+            padding: 10px;
+            margin-right: -20px;
+
+        }
 
         .mediaImg{
+            @include body(800px, 650px);
             
+
+            .imgMedio{
+                @include body(100%, 100%);
+                object-fit: cover;
+                border-radius: 20px;
+            }
+        }
+        .mediaTxt{
+            @include body(500px, 650px);
+            background-color: #f8f9fa;
+            padding: 30px;
+            margin-left: -100px;
+            line-height: 20px;
+
+            span{
+                strong{
+                    font-weight: bold;
+                }
+            }
         }
         
     }
 
     footer{
-        background-color: #161a1d;
+        background-color: black;
         width: auto;
         height: 100px;
     }

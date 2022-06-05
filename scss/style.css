@@ -220,15 +220,62 @@ body .cardSection .containImg .cardImgCont .h2Img {
 }
 
 body .mediaContain {
-  background-image: url(./assets2/imagMedia.jpg);
-  background-size: cover;
-  background-position: center center;
+  background-color: #bf9d81;
   height: 1000px;
   width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body .mediaContain .h2Media {
+  background-color: black;
+  color: #f8f9fa;
+  height: 100px;
+  width: 300px;
+  z-index: 10;
+  padding: 10px;
+  margin-right: -20px;
+}
+
+body .mediaContain .mediaImg {
+  height: 800px;
+  width: 650px;
+}
+
+body .mediaContain .mediaImg .imgMedio {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
+}
+
+body .mediaContain .mediaTxt {
+  height: 500px;
+  width: 650px;
+  background-color: #f8f9fa;
+  padding: 30px;
+  margin-left: -100px;
+  line-height: 20px;
+}
+
+body .mediaContain .mediaTxt span strong {
+  font-weight: bold;
 }
 
 body footer {
-  background-color: #161a1d;
+  background-color: black;
   width: auto;
   height: 100px;
 }
