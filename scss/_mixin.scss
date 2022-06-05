@@ -1,0 +1,20 @@
+@mixin nav($display, $direccion, $justifica, $alinea, $position){
+    
+    display: $display;
+    flex-direction: $direccion;
+    justify-content: $justifica;
+    align-items: $alinea;
+    position: $position;
+}
+
+@mixin section($display, $justifica, $alinea){
+    
+    display: $display;
+    justify-content: $justifica;
+    align-items: $alinea;
+}
+
+@mixin body ($height, $width){
+    height: $height;
+    width: $width;
+}

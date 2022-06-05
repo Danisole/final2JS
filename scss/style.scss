@@ -1,0 +1,166 @@
+@import 'global';
+@import 'mixin';
+
+body{
+
+/*la nav*/
+    header{
+    min-height: 100vh;
+    background: linear-gradient(#caf0f8, #0496FF);
+    
+    .nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        @include section(flex, space-around, center);
+        z-index: 100000000;
+
+        &.active{
+            background-color: #f8f9fa;
+            height: 70px;
+            transition: .7s linear;          
+            
+        }
+        .logo{
+            &.active{
+            transform: scale(0.5);
+            transition: .7s;
+            } 
+        }
+        
+
+        .ullNav{
+            @include section(flex, space-between, center);
+            gap: 30px;
+
+            a{
+                padding: 6px 15px;
+                color: #00296b;
+                font-size: 25px;
+                letter-spacing: 2px;
+                font-weight: bold;
+                border-radius: 20px;
+
+                &:hover{
+                    background: #fff;
+                    color: #0496FF;
+                    transition: .7s;
+                }
+            }
+        }
+
+    }
+
+    .parallax{
+        position: relative;
+        @include body(100vh, 100%);
+        padding: 100px;
+        @include section(flex, center, center);
+        
+        .portada{
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include body(100%, 100%);
+            object-fit: cover;  
+            z-index: 13;
+            
+        } 
+        .montañas{
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include body(100%, 100%);
+            object-fit: cover;  
+            z-index: 9;
+        } 
+
+        .title{
+            font-family: 'MonteCarlo', cursive;
+            font-size: 170px;
+            z-index: 10;
+            color: #00296b; 
+        }
+    }
+    }
+
+    .cardSection{
+
+        position: relative;
+        padding: 100px;
+        background: #f8f9fa;
+
+        .h2Cards{
+                @include section(flex, center, center);
+                font-size: 60px;
+                font-weight: 900;
+                margin-bottom: 60px;
+        }
+
+        .containImg{
+            @include section(flex, space-evenly, center);
+
+            .cardImgCont{
+                @include body(450px, 350px);
+                background-color: #333;
+                border-radius: 15px;
+                outline: 2px solid rgba(255, 255, 255, .7);
+                outline-offset: -20px;
+                box-shadow: 3px 3px 10px rgba(0, 0, 0, .1);
+                position: relative;
+                overflow: hidden;
+                @include section(flex, center, center);
+                
+                
+
+                .cardImg{
+                    position: absolute;
+                    inset: 0;
+                    @include body(100%, 100%);
+                    object-fit: cover;
+                    transition: transform .75s;
+                    opacity: .8;
+                    
+
+                    &:hover{
+                        transform: scale(1.15);
+                        opacity: 1;
+                        
+                    }
+                    
+                }
+
+                .h2Img{
+                    position: absolute;
+                    font-size: 30px;
+                    color: #f8f9fa;
+                    text-shadow: rgba(51, 51, 51, .5);
+                    
+                    
+                }
+
+            }
+        }
+
+    }
+
+    .mediaContain{
+        background-image: url(./assets2/imagMedia.jpg);
+        background-size: cover;
+        background-position: center center;
+        height: 1000px;
+        width: auto;
+
+        .mediaImg{
+            
+        }
+        
+    }
+
+    footer{
+        background-color: #161a1d;
+        width: auto;
+        height: 100px;
+    }
+}
