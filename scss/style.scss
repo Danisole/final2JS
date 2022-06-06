@@ -192,21 +192,52 @@ body{
     footer{
         background-color: black;
         width: auto;
-        height: 200px;
-        @include section(flex, center,flex-end);
+        height: 300px;
+        @include section(flex, center,center); 
+        flex-direction: column;
         padding: 30px;
+        gap: 40px;
 
-        .pFooter{
-            color: #f8f9fa;
-            word-spacing: 3px;
+        .redes{
+            @include section(flex, center, center);
+            gap: 50px;
 
-            .nick{
-                color:#ff5d8f ;
-                font-size: 20px;
-                &:hover{
-                    color:#ff0054 ;
+            .icon{
+                @include body(50px, 50px);
+                background-color: black;
+                color: #f8f9fa;
+                border-radius: 50%;
+                @include section(flex, center, center);
+                box-shadow: 5px 5px 10px #ad5216, -5px -5px 10px #e9701e;
+                
+
+                &:focus{
+                    animation: shadow .15s ease-in-out;
+
+                }
+            }
+            
+            
+        }
+        .containFooter{
+
+            @include section(flex, flex-end,center);
+            
+            .pFooter{
+                color: #f8f9fa;
+                word-spacing: 3px;
+
+                .nick{
+                    color:#ff5d8f ;
+                    font-size: 20px;
+                    &:hover{
+
+                        color:#ff0054;
+                    }
                 }
             }
         }
+
+        
     }
 }

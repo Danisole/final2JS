@@ -291,30 +291,84 @@ body .mediaContain .mediaTxt {
 body footer {
   background-color: black;
   width: auto;
-  height: 200px;
+  height: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 30px;
+  gap: 40px;
 }
 
-body footer .pFooter {
+body footer .redes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 50px;
+}
+
+body footer .redes .icon {
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  color: #f8f9fa;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 5px 5px 10px #ad5216, -5px -5px 10px #e9701e;
+          box-shadow: 5px 5px 10px #ad5216, -5px -5px 10px #e9701e;
+}
+
+body footer .redes .icon:focus {
+  -webkit-animation: shadow .15s ease-in-out;
+          animation: shadow .15s ease-in-out;
+}
+
+body footer .containFooter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body footer .containFooter .pFooter {
   color: #f8f9fa;
   word-spacing: 3px;
 }
 
-body footer .pFooter .nick {
+body footer .containFooter .pFooter .nick {
   color: #ff5d8f;
   font-size: 20px;
 }
 
-body footer .pFooter .nick:hover {
+body footer .containFooter .pFooter .nick:hover {
   color: #ff0054;
 }
 /*# sourceMappingURL=style.css.map */
