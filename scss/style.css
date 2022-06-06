@@ -79,7 +79,7 @@ body header .nav .ullNav {
 body header .nav .ullNav a {
   padding: 6px 15px;
   color: #00296b;
-  font-size: 25px;
+  font-size: 22px;
   letter-spacing: 2px;
   font-weight: bold;
   border-radius: 20px;
@@ -153,7 +153,7 @@ body .cardSection .h2Cards {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 900;
   margin-bottom: 60px;
 }
@@ -168,6 +168,9 @@ body .cardSection .containImg {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 60px;
 }
 
 body .cardSection .containImg .cardImgCont {
@@ -265,18 +268,53 @@ body .mediaContain .mediaTxt {
   height: 500px;
   width: 650px;
   background-color: #f8f9fa;
-  padding: 30px;
+  padding: 40px 30px;
   margin-left: -100px;
-  line-height: 20px;
-}
-
-body .mediaContain .mediaTxt span strong {
-  font-weight: bold;
+  line-height: 18px;
+  overflow: hidden;
+  font-size: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 body footer {
   background-color: black;
   width: auto;
-  height: 100px;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding: 30px;
+}
+
+body footer .pFooter {
+  color: #f8f9fa;
+  word-spacing: 3px;
+}
+
+body footer .pFooter .nick {
+  color: #ff5d8f;
+  font-size: 20px;
+}
+
+body footer .pFooter .nick:hover {
+  color: #ff0054;
 }
 /*# sourceMappingURL=style.css.map */

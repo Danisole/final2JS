@@ -37,7 +37,7 @@ body{
             a{
                 padding: 6px 15px;
                 color: #00296b;
-                font-size: 25px;
+                font-size: 22px;
                 letter-spacing: 2px;
                 font-weight: bold;
                 border-radius: 20px;
@@ -93,13 +93,16 @@ body{
 
         .h2Cards{
                 @include section(flex, center, center);
-                font-size: 60px;
+                font-size: 50px;
                 font-weight: 900;
                 margin-bottom: 60px;
         }
 
         .containImg{
             @include section(flex, space-evenly, center);
+            flex-wrap: wrap;
+            gap: 60px;
+            
 
             .cardImgCont{
                 @include body(450px, 350px);
@@ -175,22 +178,35 @@ body{
         .mediaTxt{
             @include body(500px, 650px);
             background-color: #f8f9fa;
-            padding: 30px;
+            padding: 40px 30px; 
             margin-left: -100px;
-            line-height: 20px;
+            line-height: 18px;
+            overflow: hidden;
+            font-size: 15px;
+            @include section(flex, center, center);
+            flex-direction: column;
 
-            span{
-                strong{
-                    font-weight: bold;
-                }
-            }
-        }
-        
+        }      
     }
 
     footer{
         background-color: black;
         width: auto;
-        height: 100px;
+        height: 200px;
+        @include section(flex, center,flex-end);
+        padding: 30px;
+
+        .pFooter{
+            color: #f8f9fa;
+            word-spacing: 3px;
+
+            .nick{
+                color:#ff5d8f ;
+                font-size: 20px;
+                &:hover{
+                    color:#ff0054 ;
+                }
+            }
+        }
     }
 }
