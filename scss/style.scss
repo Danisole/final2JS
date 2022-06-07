@@ -105,7 +105,7 @@ body{
             
 
             .cardImgCont{
-                @include body(450px, 350px);
+                @include body(400px, 300px);
                 background-color: #333;
                 border-radius: 15px;
                 outline: 2px solid rgba(255, 255, 255, .7);
