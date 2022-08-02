@@ -192,40 +192,44 @@ body{
     footer{
         background-color: black;
         width: auto;
-        height: 300px;
-        @include section(flex, center,center); 
+        height: 200px;
+        display: flex;
         flex-direction: column;
-        padding: 30px;
+        padding: 20px;
         gap: 40px;
 
         .redes{
-            @include section(flex, center, center);
-            gap: 50px;
+           height: 100px;
+           width: auto;
+           @include section(flex,center, center);
+           gap: 120px;
 
             .icon{
-                @include body(50px, 50px);
-                background-color: black;
-                color: #f8f9fa;
-                border-radius: 50%;
-                @include section(flex, center, center);
-                box-shadow: 5px 5px 10px #ad5216, -5px -5px 10px #e9701e;
-                
-
-                &:focus{
-                    animation: shadow .15s ease-in-out;
-
+                height: 50px;
+                width: 50px;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 30px;
+                &:hover{
+                    font-size: 40px;
+                    color:#ff0054;
+                    transition: .5s ease;
                 }
+
             }
             
             
         }
         .containFooter{
+            @include section(flex,center, flex-end);
+            height: 100px;
 
-            @include section(flex, flex-end,center);
-            
             .pFooter{
                 color: #f8f9fa;
                 word-spacing: 3px;
+                
 
                 .nick{
                     color:#ff5d8f ;
