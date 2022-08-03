@@ -27,26 +27,38 @@ window.addEventListener('scroll', e =>{
 // alert(`usted selecciono los siguientes servicios:\n${servicios.join("\n")}`)
 
 
-const carpas = [
-    {nombre: "carpa1", camas: 2, desayuno:true, precio: 2000},
-    {nombre: "carpa2", camas: 4, desayuno:true, precio: 2890},
-    {nombre: "carpa3", camas: 3, desayuno:true, precio: 2400},
-    {nombre: "cabaña", camas: 6, desayuno:true, precio: 4000},
-];
 
-let precioLimite = parseInt(prompt("ingrese la cantidad de camas que necesita"))
+let nombre = [];
 
-let buscarPrecio = carpas.find((el) => el.precio < precioLimite)
+let tuNombre = prompt("ingrese su nombre")
 
-    if(buscarPrecio){
+let ingreseNombre = nombre.push(tuNombre.toLocaleUpperCase())
+
+alert(`Hola bienvenido ${nombre} a la pagina de reservas`)
+
+
+
+
+// const carpas = [
+//     {nombre: "carpa1", camas: 2, desayuno:true, precio: 2000},
+//     {nombre: "carpa2", camas: 4, desayuno:true, precio: 2890},
+//     {nombre: "carpa3", camas: 3, desayuno:true, precio: 2400},
+//     {nombre: "cabaña", camas: 6, desayuno:true, precio: 4000},
+// ];
+
+// let precioLimite = parseInt(prompt("Bienvenidos! ingrese la cantidad de camas que necesita"))
+
+// let buscarPrecio = carpas.find((el) => el.camas == precioLimite)
+
+//     if(buscarPrecio){
         
-    alert(`segun su busqueda de camas disponemos de la habitacion ${buscarPrecio.nombre}`)
+//     alert(`segun su busqueda de camas disponemos de la habitacion ${buscarPrecio.nombre}`)
 
-    }else{
+//     }else{
 
-        alert ("no hay coincidencias para su busqueda")
+//         alert ("no hay coincidencias para su busqueda")
         
-    }
+//     }
 
 
 
