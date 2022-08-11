@@ -48,15 +48,7 @@ function errorNombre(){
 
 //card evento
 
-tituloCard.addEventListener("mousemove", removerTitulo)
 
-function removerTitulo(){
-    
-for (let i = 0; i<tituloCard.length; i++) {
-   tituloCard.classList.remove("hidden");
-   tituloCard.classList.add("hidden");
-}
-}
 
 
 
