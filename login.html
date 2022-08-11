@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./scss/style.css">
     <link rel="icon" href="./assets/logos/circuloSinFondo.png">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>ALDEA</title>
 </head>
 
@@ -21,7 +20,7 @@
             <ul class="ullNav">
                 <li class="navMenuItems"><a class="nav-link"  href="./index.html">Inicio</a></li>
                 <li class="navMenuItems"><a class="nav-link" href="#">Reservas</a></li>
-                <li class="navMenuItems"><a class="nav-link" href="#">Nosotros</a></li>
+                <li class="navMenuItems"><a class="nav-link" href="./index.html#mediaContain">Nosotros</a></li>
                 <li class="navMenuItems"><a class="nav-link" href="./login.html">Logueate</a></li>
             </ul>
 
@@ -62,7 +61,7 @@
             <div class="titulo">
                 <h2>Registro</h2>
             </div>
-                <input type="text" name="usuario" placeholder="Nombre y Apellido" required>
+                <input id="usuario" type="text" name="usuario" placeholder="Nombre y Apellido" required>
                 <input type="email" name="email" placeholder="E-mail" required>
                 <input type="password" name="password" placeholder="Contraseña" required>
                 <input type="submit" name="submit" value="Crear" class="boton">
@@ -85,7 +84,8 @@
     </div>
         
 </footer>
+<button class="scroll-top-btn hidden">&#11014;</button>
 
-<script src="./js/index.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 </html>

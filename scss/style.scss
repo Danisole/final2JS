@@ -192,7 +192,7 @@ body{
     footer{
         background-color: black;
         width: auto;
-        height: 200px;
+        height: 150px;
         display: flex;
         flex-direction: column;
         padding: 20px;
@@ -207,7 +207,7 @@ body{
             .icon{
                 height: 50px;
                 width: 50px;
-                color: white;
+                color: rgb(242, 233, 233);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -243,5 +243,30 @@ body{
         }
 
         
+    }
+
+    .scroll-top-btn{
+        position: fixed;
+        z-index: 999;
+        bottom: 1vh;
+        right: 1vh;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: rgba(191,157,129,1);
+        color: black;
+        cursor: pointer;
+        outline: 0;
+        transition: all 0.3s ease-out;
+        &:hover{
+            background-color: black;
+            color: white;
+        }
+        .hidden{
+            visibility: hidden;
+            opacity: 0;
+        }
     }
 }
