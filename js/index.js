@@ -5,6 +5,7 @@ const nav = document.querySelector('.nav');
 const logo = document.querySelector('.logo');
 const botonParaSubir = document.querySelector("button");
 const nombreUsuario = document.getElementById("usuario");
+const contenedorCarpas = document.getElementById("contenedorCarpas");
 
 
 w.addEventListener('scroll', e =>{
@@ -36,7 +37,9 @@ nombreUsuario.addEventListener("input", errorNombre)
 
 function errorNombre(){
     if(isNaN(nombreUsuario.value)){
+
         nombreUsuario.style.color="black"
+
     }else{
         nombreUsuario.style.color="red"
     }
@@ -63,13 +66,36 @@ carpaArray.push(new Carpas(3, "Carpa Muitú", 3200, 3));
 carpaArray.push(new Carpas(4, "Cabaña Ipacaá", 4800, 6));
 
 
-console.log(carpaArray)
+console.log(carpaArray);
 
 
-let buscarCarpas = carpaArray.find(persona =>persona.personas == filtrarCarpas)
+//agregar las cards para establecer las carpas
+
+
+
+carpaArray.forEach((carpa)=>{
+
+    const div = d.createElement("div");
+    div.classList.add("carpasCard");
+
+    div.innerHTML +=`
+        <h3>${carpa.nombre}</h3>
+        <p>${carpa.precio}</p>
+        <p>${carpa.personas}</p>
+        <button id="button${carpa.id}>Contratar</button>
+    `;
+    contenedorCarpas.appendChild(div)
+})
+
 
 
 let filtrarCarpas = parseInt(prompt("ingrese cantidad de personas"))
+
+let buscarCarpas = carpaArray.find(persona =>persona.personas == filtrarCarpas)
+
+alert(`segun su busqueda disponemos de la ${buscarCarpas.nombre}`)
+
+
 
 
 
