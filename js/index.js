@@ -5,10 +5,6 @@ const nav = document.querySelector('.nav');
 const logo = document.querySelector('.logo');
 const botonParaSubir = document.querySelector("button");
 const nombreUsuario = document.getElementById("usuario");
-const tituloCard = document.querySelector(".h2Img");
-
-
-
 
 
 w.addEventListener('scroll', e =>{
@@ -46,7 +42,35 @@ function errorNombre(){
     }
 }
 
-//card evento
+//carrito evento
+
+//carpas array
+
+const carpaArray = [];
+
+class Carpas{
+    constructor(id, nombre, precio, personas){
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.personas = personas
+    }
+}
+
+carpaArray.push(new Carpas(1, "Carpa Sirirí", 2500, 4));
+carpaArray.push(new Carpas(2, "Carpa Calandria", 2000, 2));
+carpaArray.push(new Carpas(3, "Carpa Muitú", 3200, 3));
+carpaArray.push(new Carpas(4, "Cabaña Ipacaá", 4800, 6));
+
+
+console.log(carpaArray)
+
+
+let buscarCarpas = carpaArray.find(persona =>persona.personas == filtrarCarpas)
+
+
+let filtrarCarpas = parseInt(prompt("ingrese cantidad de personas"))
+
 
 
 
