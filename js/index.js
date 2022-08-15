@@ -63,7 +63,7 @@ let stockCarrito = [];
 
 const contenedorProductos = document.getElementById("contenedor-productos");
 const contenedorCarritoReservas = document.querySelector("#items");
-const contenedorFooterCarrito = document.querySelector("#footer");
+const contenedorFooterCarrito = document.getElementById("footer");
 
 // carga de carpas
 
@@ -134,6 +134,31 @@ function crearCard(producto){
         
         
         dibujarCarrito();
+
+        swal({
+            title: "¡Producto Agregado!",
+            text: `${producto.nombre} agregado al carrito de reservas`,
+            icon: "success",
+            buttons:{
+                cerrar:{
+                    text: "Cerrar",
+                    value: false
+                },
+                carrito:{
+                    text: "Ir al carrito",
+                    value: true
+                }
+            }
+        }).then((irACarrito) =>{
+
+            if(irACarrito){
+
+                const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {keyboard: true});
+                const modalToggle = document.querySelector('#toggleMyModal');
+                myModal.show(modalToggle);
+                
+            }
+        });
     }
 
     return carta
@@ -143,9 +168,19 @@ function dibujarCarrito(){
     contenedorCarritoReservas.innerHTML = "";
 
     let totalCarrito = 0;
+    let totalProductos = 1;
+    let totalCantidad = 0;
 
     stockCarrito.forEach(
         (elemento) => {
+
+        //agregar numero al boton Reservas
+            
+        const modalToggle = document.querySelector('#toggleMyModal');
+        modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"></i> ${totalProductos}</span>`
+        totalProductos+=parseInt(elemento.cantidad);
+        totalCantidad+=parseInt(elemento.cantidad) 
+
             let renglonCarrito = document.createElement("tr");
 
             renglonCarrito.innerHTML = `
@@ -154,7 +189,7 @@ function dibujarCarrito(){
             <td><input id="cantidad-producto-${elemento.producto.id}" type="number" value="${elemento.cantidad}" min="1" max="3" step="1" style="width:70px"</td>
             <td>${elemento.producto.precio}</td>
             <td>${elemento.producto.precio*elemento.cantidad}</td>
-            
+
             `;
             contenedorCarritoReservas.append(renglonCarrito)
 
@@ -162,6 +197,8 @@ function dibujarCarrito(){
             contenedorCarritoReservas.append(renglonCarrito);
 
             let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
+
+            
 
             inputCantidadProductos.addEventListener("change", (e)=>{
                 let nuevaCantidad = e.target.value;
@@ -171,6 +208,17 @@ function dibujarCarrito(){
             })
         }
     );
+
+
+    if(stockCarrito.length == 0){
+        
+        contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>`;
+    
+    }else{
+        contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Total de la reserva $ ${totalCarrito}, ${totalCantidad} carpas reservadas</th>`
+    }
+
+
 }
 
 
