@@ -24,7 +24,64 @@ a {
 }
 
 body {
+  /*Reservas*/
   /*la nav*/
+}
+
+body .headerReservas {
+  background: none;
+  min-height: 15vh;
+  padding-top: 10vh;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .headerReservas .navReservas {
+  min-height: 11vh;
+  background: #caf0f8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 100000000;
+}
+
+body .headerReservas .ullNav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+}
+
+body .headerReservas .ullNav a {
+  padding: 6px 15px;
+  color: #00296b;
+  font-size: 22px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+body .headerReservas .ullNav a:hover {
+  background: #fff;
+  color: #0496FF;
+  -webkit-transition: .7s;
+  transition: .7s;
 }
 
 body header {
@@ -46,6 +103,7 @@ body header .nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: #caf0f8;
   z-index: 100000000;
 }
 

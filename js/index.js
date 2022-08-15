@@ -5,16 +5,16 @@ const nav = document.querySelector('.nav');
 const logo = document.querySelector('.logo');
 const botonParaSubir = document.querySelector("button");
 const nombreUsuario = document.getElementById("usuario");
-const contenedorCarpas = document.getElementById("contenedorCarpas");
+const contenedor = document.getElementById("contenedorCarpas");
 
 
-w.addEventListener('scroll', e =>{
-    let value = w.scrollY; 
-    title.style.marginTop = value * .7 + 'px';
-    nav.classList.toggle('active', window.scrollY > 0);
-    logo.classList.toggle('active', window.scrollY > 0);
-
+w.addEventListener('scroll', (e) =>{
+    // let value = w.scrollY; 
+    // title.style.marginTop = value * .7 + 'px';
+    // nav.classList.toggle('active', window.scrollY > 0);
+    // logo.classList.toggle('active', window.scrollY > 0);
 });
+
 // agregar eventos
 
 botonParaSubir.addEventListener("click", ()=>{
@@ -27,73 +27,171 @@ botonParaSubir.addEventListener("click", ()=>{
 
 logo.addEventListener("click", saludo)
 
-function saludo(){
+function saludo(e){
     alert("Bienvenido a Aldea Glamping")
+    e.preventDefault()
 }
 
-//logueo evento
+// carpas constructor
 
-nombreUsuario.addEventListener("input", errorNombre)
-
-function errorNombre(){
-    if(isNaN(nombreUsuario.value)){
-
-        nombreUsuario.style.color="black"
-
-    }else{
-        nombreUsuario.style.color="red"
+class Carpas{
+    constructor(id, nombre, precio, personas, imag){
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = parseFloat(precio);
+        this.personas = parseInt(personas);
+        this.imag = imag
     }
 }
-
-//carrito evento
-
-//carpas array
 
 const carpaArray = [];
 
-class Carpas{
-    constructor(id, nombre, precio, personas){
-        this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.personas = personas
+//carrito constructor
+
+class StockCarrito{
+
+    constructor(producto, cantidad){
+        this.producto = producto,
+        this.cantidad = cantidad
     }
 }
 
-carpaArray.push(new Carpas(1, "Carpa Sirirí", 2500, 4));
-carpaArray.push(new Carpas(2, "Carpa Calandria", 2000, 2));
-carpaArray.push(new Carpas(3, "Carpa Muitú", 3200, 3));
-carpaArray.push(new Carpas(4, "Cabaña Ipacaá", 4800, 6));
+//variable donde vamos a guardar los elementos 
 
+let stockCarrito = [];
+
+
+const contenedorProductos = document.getElementById("contenedor-productos");
+const contenedorCarritoReservas = document.querySelector("#items");
+const contenedorFooterCarrito = document.querySelector("#footer");
+
+// carga de carpas
+
+function CargarCarpas(){
+
+    carpaArray.push(new Carpas(1, "Carpa Sirirí", 2500, 4,"./assets/pexels-cottonbro-5358920.jpg"));
+    carpaArray.push(new Carpas(2, "Carpa Calandria", 2000, 2,"./assets/carpa3.jpg"));
+    carpaArray.push(new Carpas(3, "Carpa Muitú", 3200, 3, "./assets/navDesplegada2.jpg"));
+    carpaArray.push(new Carpas(4, "Cabaña Ipacaá", 4800, 6, "./assets/cabaña.jpg"));
+}
+
+CargarCarpas();
+dibujarCatalogoProductos()
 
 console.log(carpaArray);
 
+function dibujarCatalogoProductos(){
+    contenedorProductos.innerHTML = "";
 
-//agregar las cards para establecer las carpas
+    carpaArray.forEach(
+        (producto) =>{
+            let carta = crearCard(producto);
+            contenedorProductos.append(carta);
 
+        }
+    )
+};
 
+function crearCard(producto){
 
-carpaArray.forEach((carpa)=>{
+    //boton
 
-    const div = d.createElement("div");
-    div.classList.add("carpasCard");
+    let botonAgregar = document.createElement("button");
+    botonAgregar.className = "btn btn-success d-grid gap-2 col-6 mx-auto";
+    botonAgregar.innerText = "Reservar";
 
-    div.innerHTML +=`
-        <h3>${carpa.nombre}</h3>
-        <p>${carpa.precio}</p>
-        <p>${carpa.personas}</p>
-        <button id="button${carpa.id}>Contratar</button>
+    //cuerpo carta
+    
+    let cuerpoCard = document.createElement("div");
+    cuerpoCard.className = "card-body";
+    cuerpoCard.innerHTML =`
+    <h5 class="d-flex justify-content-center">${producto.nombre}</h5>
+    <p class="d-flex justify-content-center">Precio $ ${producto.precio}</p>
+    <p class="d-flex justify-content-center">Capacidad ${producto.personas} personas</p>
     `;
-    contenedorCarpas.appendChild(div)
-})
+    cuerpoCard.append(botonAgregar)
+
+
+    //imagen
+    let imagen = document.createElement("img");
+    imagen.src = producto.imag;
+    imagen.className = "card-img-top h-3";
+    imagen.alt = producto.nombre;
+
+    // carta
+
+    let carta = document.createElement("div");
+    carta.className = "card m-2 p-3 mb-5 mt-3";
+    carta.style = "width: 40rem";
+    carta.append(imagen);
+    carta.append(cuerpoCard);
+
+    // evento del boton
+
+    botonAgregar.onclick = (e) =>{
+
+        stockCarrito.push(new StockCarrito(producto, 1));
+        
+        
+        dibujarCarrito();
+    }
+
+    return carta
+}
+
+function dibujarCarrito(){
+    contenedorCarritoReservas.innerHTML = "";
+
+    let totalCarrito = 0;
+
+    stockCarrito.forEach(
+        (elemento) => {
+            let renglonCarrito = document.createElement("tr");
+
+            renglonCarrito.innerHTML = `
+            <td>${elemento.producto.id}</td>
+            <td>${elemento.producto.nombre}</td>
+            <td><input id="cantidad-producto-${elemento.producto.id}" type="number" value="${elemento.cantidad}" min="1" max="3" step="1" style="width:70px"</td>
+            <td>${elemento.producto.precio}</td>
+            <td>${elemento.producto.precio*elemento.cantidad}</td>
+            
+            `;
+            contenedorCarritoReservas.append(renglonCarrito)
+
+            totalCarrito+=elemento.producto.precio*elemento.cantidad;
+            contenedorCarritoReservas.append(renglonCarrito);
+
+            let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
+
+            inputCantidadProductos.addEventListener("change", (e)=>{
+                let nuevaCantidad = e.target.value;
+                elemento.cantidad = nuevaCantidad;
+                
+                dibujarCarrito();
+            })
+        }
+    );
+}
 
 
 
-let filtrarCarpas = parseInt(prompt("ingrese cantidad de personas"))
 
-let buscarCarpas = carpaArray.find(persona =>persona.personas == filtrarCarpas)
 
-alert(`segun su busqueda disponemos de la ${buscarCarpas.nombre}`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
