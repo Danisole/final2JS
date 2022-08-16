@@ -206,6 +206,7 @@ function dibujarCarrito(){
                 
                 dibujarCarrito();
             })
+
         }
     );
 
@@ -217,6 +218,54 @@ function dibujarCarrito(){
     }else{
         contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Total de la reserva $ ${totalCarrito}, ${totalCantidad} carpas reservadas</th>`
     }
+
+    //variables de los botones reservar y cerrar(suspenso)
+
+    const cerrarCarrito = document.querySelector("#modalFooterClose");
+    const reservarCarrito = document.querySelector("#modalFooterReserv");
+
+    //confirmacion de la reserva (suspenso)
+
+    reservarCarrito.onclick=()=>{
+
+        if(stockCarrito != 0){    
+
+                swal("Esta seguro que quiere terminar el proceso", {
+                        buttons: ["Por ahora no", "Reservar"],
+                });
+        }else{
+            swal("Esta seguro que quiere terminar el proceso", {
+                buttons: ["Por ahora no", "Reservar"],
+                });
+        }
+
+    }
+
+    
+
+
+
+
+
+
+    // if(stockCarrito.length != "" ){
+    //     reservarCarrito.addEventListener("click", reservacionTerminada);
+
+    //     function reservacionTerminada(){
+    //         swal("Esta seguro que quiere terminar el proceso", {
+    //             buttons: ["Por ahora no", "Reservar"],
+    //           });
+    //     }
+    // }else if(stockCarrito.length == ""){
+
+    //     reservarCarrito.addEventListener("click", reservacionVacia);
+
+    //     function reservacionVacia(){
+    //         swal("El carrito esta vacio");
+    //     }
+    // }
+
+    //cerrarCarrito
 
 
 }
