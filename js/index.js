@@ -137,7 +137,7 @@ function crearCard(producto){
 
         swal({
             title: "¡Producto Agregado!",
-            text: `${producto.nombre} agregado al carrito de reservas`,
+            text: `La ${producto.nombre} fue agregada al carrito de reservas`,
             icon: "success",
             buttons:{
                 cerrar:{
@@ -226,49 +226,43 @@ function dibujarCarrito(){
 
     //confirmacion de la reserva (suspenso)
 
-    reservarCarrito.onclick=()=>{
-
-        if(stockCarrito != 0){    
-
-                swal("Esta seguro que quiere terminar el proceso", {
-                        buttons: ["Por ahora no", "Reservar"],
-                });
-        }else{
-            swal("Esta seguro que quiere terminar el proceso", {
-                buttons: ["Por ahora no", "Reservar"],
-                });
-        }
-
-    }
-
+    reservarCarrito.addEventListener("click", condiconalVacio);
     
 
+    function condiconalVacio(stockCarrito){
 
+        if(stockCarrito.length != 0){    
 
+            swal({
+                title: "Esta seguro que desea confirmar tu reservación",
+                text: "Una vez confirmada se realizara el cobro de la estadía",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                swal("¡Felicitaciones! Tu reserva ha sido confirmada, revisa tu casilla de mensajes para mas informacion", {
+                    icon: "success",
+                });
 
+                } else {
+                swal("Your imaginary file is safe!");
+                }
+            });
 
+        }else{
 
-    // if(stockCarrito.length != "" ){
-    //     reservarCarrito.addEventListener("click", reservacionTerminada);
-
-    //     function reservacionTerminada(){
-    //         swal("Esta seguro que quiere terminar el proceso", {
-    //             buttons: ["Por ahora no", "Reservar"],
-    //           });
-    //     }
-    // }else if(stockCarrito.length == ""){
-
-    //     reservarCarrito.addEventListener("click", reservacionVacia);
-
-    //     function reservacionVacia(){
-    //         swal("El carrito esta vacio");
-    //     }
-    // }
-
-    //cerrarCarrito
-
-
+            swal("carrito vacio")
+        }
+    }
 }
+
+
+
+
+
+
 
 
 

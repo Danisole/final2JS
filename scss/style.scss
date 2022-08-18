@@ -45,8 +45,9 @@ body{
     //login
     .headerLogin{
         background: none;
-        min-height: 15vh;
+        min-height: 0;
         padding-top: 10vh;
+        
 
         .navLogin{
             min-height: 11vh;
@@ -79,8 +80,10 @@ body{
             }
         }
     }
-
-   
+    .login{
+        background: "./assets2/pexels-los-muertos-crew-8849246.jpg";
+        height: 120vh;
+    }
 
     /*la nav*/
 
@@ -269,6 +272,19 @@ body{
 
         }      
     }
+
+    
+    .containerFormLogin{
+        height: 100vh;
+        margin: 7vh;
+
+        .form-control{
+            height: 7vh;
+        }
+    }
+           
+        
+    
 
     footer{
         background-color: black;

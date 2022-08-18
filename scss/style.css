@@ -83,7 +83,7 @@ body .headerReservas .ullNav a:hover {
 
 body .headerLogin {
   background: none;
-  min-height: 15vh;
+  min-height: 0;
   padding-top: 10vh;
 }
 
@@ -135,7 +135,8 @@ body .headerLogin .ullNav a:hover {
 }
 
 body .login {
-  background-image: "./assets2/pexels-los-muertos-crew-8849246.jpg";
+  background: "./assets2/pexels-los-muertos-crew-8849246.jpg";
+  height: 120vh;
 }
 
 body header {
@@ -398,6 +399,15 @@ body .mediaContain .mediaTxt {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+body .containerFormLogin {
+  height: 100vh;
+  margin: 7vh;
+}
+
+body .containerFormLogin .form-control {
+  height: 7vh;
 }
 
 body footer {
