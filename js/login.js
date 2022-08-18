@@ -7,7 +7,13 @@ let btnLogin = document.getElementsByClassName("submitLogin")
 
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
+
+    //Utilizacion de operador ternario
+
     validate()
+    
+    window.location.href = "index.html"
+    
 })
 
 //Regex para la validacion
@@ -20,6 +26,7 @@ const validate =()=>{
     const user = username.value.trim()//sacamos espacios en los extremos
     const mail = email.value.trim();
     const pass = password.value.trim();
+    const pass2 = password2.value.trim();
 
     //comprobaciones
 
@@ -61,6 +68,19 @@ const validate =()=>{
         inputSuccess(password)
     }
 
+    if(pass2 === ""){
+        let message = "El password no puede estar vacio";
+        inputError(password2, message)
+
+    }else if(pass2 !== pass){  
+        
+        let message="Los password no coinciden";
+        inputError(password2, message);
+
+    }else{
+        inputSuccess(password2)
+    }
+
 };
 
 const inputSuccess = (input)=>{
@@ -84,6 +104,7 @@ const inputError = (input, message)=>{
     small.classList.add("error")
     
 }
+
 
 
 

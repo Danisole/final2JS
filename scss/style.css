@@ -15,6 +15,11 @@ body {
   overflow: auto;
 }
 
+.bodyLoguin {
+  min-height: 300px;
+  overflow: auto;
+}
+
 ul {
   list-style-type: none;
 }
@@ -132,11 +137,6 @@ body .headerLogin .ullNav a:hover {
   color: #0496FF;
   -webkit-transition: .7s;
   transition: .7s;
-}
-
-body .login {
-  background: "./assets2/pexels-los-muertos-crew-8849246.jpg";
-  height: 120vh;
 }
 
 body header {
@@ -402,7 +402,7 @@ body .mediaContain .mediaTxt {
 }
 
 body .containerFormLogin {
-  height: 100vh;
+  height: 60vh;
   margin: 7vh;
 }
 
@@ -413,7 +413,7 @@ body .containerFormLogin .form-control {
 body footer {
   background-color: black;
   width: auto;
-  height: 150px;
+  height: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -454,6 +454,7 @@ body footer .redes .icon {
       -ms-flex-align: center;
           align-items: center;
   font-size: 30px;
+  text-decoration: none;
 }
 
 body footer .redes .icon:hover {

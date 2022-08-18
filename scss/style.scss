@@ -43,47 +43,48 @@ body{
 
 
     //login
-    .headerLogin{
-        background: none;
-        min-height: 0;
-        padding-top: 10vh;
-        
 
-        .navLogin{
-            min-height: 11vh;
-            background:#caf0f8;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            @include section(flex, space-around, center);
-            z-index: 100000000;
-        }
+        .headerLogin{
+            background: none;
+            min-height: 0;
+            padding-top: 10vh;
+            
 
-        .ullNav{
-            @include section(flex, space-between, center);
-            gap: 30px;
+            .navLogin{
+                min-height: 11vh;
+                background:#caf0f8;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                @include section(flex, space-around, center);
+                z-index: 100000000;
+            }
 
-            a{
-                padding: 6px 15px;
-                color: #00296b;
-                font-size: 22px;
-                letter-spacing: 2px;
-                font-weight: bold;
-                border-radius: 20px;
+            .ullNav{
+                @include section(flex, space-between, center);
+                gap: 30px;
 
-                &:hover{
-                    background: #fff;
-                    color: #0496FF;
-                    transition: .7s;
+                a{
+                    padding: 6px 15px;
+                    color: #00296b;
+                    font-size: 22px;
+                    letter-spacing: 2px;
+                    font-weight: bold;
+                    border-radius: 20px;
+
+                    &:hover{
+                        background: #fff;
+                        color: #0496FF;
+                        transition: .7s;
+                    }
                 }
             }
         }
-    }
-    .login{
-        background: "./assets2/pexels-los-muertos-crew-8849246.jpg";
-        height: 120vh;
-    }
+        .containerFormLogin{
+            
+        }
+
 
     /*la nav*/
 
@@ -275,7 +276,7 @@ body{
 
     
     .containerFormLogin{
-        height: 100vh;
+        height: 60vh;
         margin: 7vh;
 
         .form-control{
@@ -289,7 +290,7 @@ body{
     footer{
         background-color: black;
         width: auto;
-        height: 150px;
+        height: 200px;
         display: flex;
         flex-direction: column;
         padding: 20px;
@@ -309,6 +310,7 @@ body{
                 justify-content: center;
                 align-items: center;
                 font-size: 30px;
+                text-decoration: none;
                 &:hover{
                     font-size: 40px;
                     color:#ff0054;
