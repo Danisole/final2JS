@@ -41,6 +41,7 @@ class Carpas{
         this.precio = parseFloat(precio);
         this.personas = parseInt(personas);
         this.imag = imag
+
     }
 }
 
@@ -53,8 +54,9 @@ class StockCarrito{
     constructor(producto, cantidad){
         this.producto = producto,
         this.cantidad = cantidad
+
     }
-}
+};
 
 //variable donde vamos a guardar los elementos 
 
@@ -231,7 +233,7 @@ function dibujarCarrito(){
 
     function condiconalVacio(stockCarrito){
 
-        if(stockCarrito.length != 0){    
+        if(stockCarrito !== 0 ){    
 
             swal({
                 title: "Esta seguro que desea confirmar tu reservación",
@@ -241,63 +243,18 @@ function dibujarCarrito(){
                 dangerMode: true,
             })
             .then((willDelete) => {
+
                 if (willDelete) {
                 swal("¡Felicitaciones! Tu reserva ha sido confirmada, revisa tu casilla de mensajes para mas informacion", {
                     icon: "success",
+                    
                 });
-
+                contenedorCarritoReservas.innerHTML = "";
                 } else {
-                swal("Your imaginary file is safe!");
+                swal("Puedes seguir con tu proceso cuando quieras");
                 }
             });
 
-        }else{
-
-            swal("carrito vacio")
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
+}   }   }
 

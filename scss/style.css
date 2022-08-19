@@ -402,12 +402,66 @@ body .mediaContain .mediaTxt {
 }
 
 body .containerFormLogin {
-  height: 60vh;
-  margin: 7vh;
+  height: 100vh;
+  background-image: url("./assets2/pexels-los-muertos-crew-8849246.jpg");
+  background-size: cover;
+  padding: 10vh 0 0 0;
 }
 
-body .containerFormLogin .form-control {
-  height: 7vh;
+body .containerFormLogin .h1Loguin {
+  font-weight: 500;
+  font-size: 2em;
+}
+
+body .containerFormLogin .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  border: 4px solid #a1b3a4;
+  border-radius: 10px;
+  background-color: rgba(209, 209, 209, 0.438);
+  width: 400px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2% auto;
+  padding: 2%;
+}
+
+body .containerFormLogin .container .formLogin .form-control {
+  background: none;
+  border: none;
+}
+
+body .containerFormLogin .container .formLogin .form-control label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  width: 100%;
+}
+
+body .containerFormLogin .container .formLogin .form-control label input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  font-family: inherit;
+  font-size: 1em;
+  padding: 5px;
+  width: 96%;
+  margin-top: 10px;
+}
+
+body .containerFormLogin .container .formLogin .submitLogin {
+  background-color: rgba(43, 71, 104, 0.808);
+  border: rgba(43, 71, 104, 0.808) solid 2px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  color: white;
+  font-size: 1.2em;
+  margin-top: 4%;
 }
 
 body footer {

@@ -276,17 +276,73 @@ body{
 
     
     .containerFormLogin{
-        height: 60vh;
-        margin: 7vh;
-
-        .form-control{
-            height: 7vh;
-        }
-    }
-           
         
-    
+        height: 100vh;
+        background-image: url("./assets2/pexels-los-muertos-crew-8849246.jpg");
+        background-size: cover;
+        padding: 10vh 0 0 0;
 
+            .h1Loguin {
+                font-weight: 500;
+                font-size: 2em;
+            }
+
+            .container{
+            display: flex;
+            overflow: hidden;
+            border: 4px solid rgb(161, 179, 164);
+            border-radius: 10px;
+            background-color: rgba(209, 209, 209, 0.438);
+            width: 400px;
+            flex-direction: column;
+            margin: 2% auto;
+            padding: 2%;
+           
+
+            .formLogin{
+
+                
+                .form-control {
+                    background: none;
+                    border: none;
+                
+                    label {
+                    display: inline-block;
+                    margin-bottom: 5px;
+                    font-size: 1.2em;
+                    width: 100%;
+                    
+
+                        input {
+                            border: 2px solid #f0f0f0;
+                            border-radius: 4px;
+                            display: block;
+                            font-family: inherit;
+                            font-size: 1em;
+                            padding: 5px;
+                            width: 96%;
+                            margin-top: 10px;
+                        }   
+                    }
+                }
+            
+                .submitLogin{
+                
+                    background-color: rgba(43, 71, 104, 0.808);
+                    border: rgba(43, 71, 104, 0.808) solid 2px;
+                    border-radius: 10px;
+                    padding: 10px;
+                    width: 100%;
+                    color: white;
+                    font-size: 1.2em;
+                    margin-top: 4%;
+                }
+
+            }
+            
+            }      
+    }
+        
     footer{
         background-color: black;
         width: auto;
@@ -297,10 +353,10 @@ body{
         gap: 40px;
 
         .redes{
-           height: 100px;
-           width: auto;
-           @include section(flex,center, center);
-           gap: 120px;
+            height: 100px;
+            width: auto;
+            @include section(flex,center, center);
+            gap: 120px;
 
             .icon{
                 height: 50px;

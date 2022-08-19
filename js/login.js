@@ -10,9 +10,9 @@ form.addEventListener("submit", (e)=>{
 
     //Utilizacion de operador ternario
 
-    validate()
+    validate() == true ? window.location.href = "index.html" : alert("error")
     
-    window.location.href = "index.html"
+    
     
 })
 
