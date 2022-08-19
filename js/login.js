@@ -10,10 +10,9 @@ form.addEventListener("submit", (e)=>{
 
     //Utilizacion de operador ternario
 
-    validate() == true ? window.location.href = "index.html" : alert("error")
+    validate() 
     
-    
-    
+
 })
 
 //Regex para la validacion
@@ -27,6 +26,7 @@ const validate =()=>{
     const mail = email.value.trim();
     const pass = password.value.trim();
     const pass2 = password2.value.trim();
+
 
     //comprobaciones
 

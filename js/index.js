@@ -8,7 +8,7 @@ const nombreUsuario = document.getElementById("usuario");
 const contenedor = document.getElementById("contenedorCarpas");
 
 
-w.addEventListener('scroll', (e) =>{
+window.addEventListener('scroll', (e) =>{
     // let value = w.scrollY; 
     // title.style.marginTop = value * .7 + 'px';
     // nav.classList.toggle('active', window.scrollY > 0);
@@ -43,6 +43,7 @@ class Carpas{
         this.imag = imag
 
     }
+
 }
 
 const carpaArray = [];
@@ -62,7 +63,6 @@ class StockCarrito{
 
 let stockCarrito = [];
 
-
 const contenedorProductos = document.getElementById("contenedor-productos");
 const contenedorCarritoReservas = document.querySelector("#items");
 const contenedorFooterCarrito = document.getElementById("footer");
@@ -80,7 +80,17 @@ function CargarCarpas(){
 CargarCarpas();
 dibujarCatalogoProductos()
 
-console.log(carpaArray);
+//------------------------------------------------------//
+
+//localstorage setear productos
+
+const guardarLocal = (clave, valor) => {localStorage.setItem(clave, valor)}
+
+for (const carpa of carpaArray){
+    guardarLocal(carpa.id, JSON.stringify(carpaArray)) //almacena en el local
+}
+
+//----------------------------------------------------------//
 
 function dibujarCatalogoProductos(){
     contenedorProductos.innerHTML = "";
@@ -201,11 +211,12 @@ function dibujarCarrito(){
             let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
 
             
+            
 
             inputCantidadProductos.addEventListener("change", (e)=>{
                 let nuevaCantidad = e.target.value;
                 elemento.cantidad = nuevaCantidad;
-                
+               
                 dibujarCarrito();
             })
 
@@ -219,7 +230,7 @@ function dibujarCarrito(){
     
     }else{
         contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Total de la reserva $ ${totalCarrito}, ${totalCantidad} carpas reservadas</th>`
-    }
+    };
 
     //variables de los botones reservar y cerrar(suspenso)
 
@@ -231,9 +242,7 @@ function dibujarCarrito(){
     reservarCarrito.addEventListener("click", condiconalVacio);
     
 
-    function condiconalVacio(stockCarrito){
-
-        if(stockCarrito !== 0 ){    
+    function condiconalVacio(){
 
             swal({
                 title: "Esta seguro que desea confirmar tu reservación",
@@ -247,14 +256,17 @@ function dibujarCarrito(){
                 if (willDelete) {
                 swal("¡Felicitaciones! Tu reserva ha sido confirmada, revisa tu casilla de mensajes para mas informacion", {
                     icon: "success",
-                    
+               
                 });
-                contenedorCarritoReservas.innerHTML = "";
+                
                 } else {
                 swal("Puedes seguir con tu proceso cuando quieras");
-                }
+                } 
+                
             });
+};   };   
 
-            
-}   }   }
+
+
+
 
