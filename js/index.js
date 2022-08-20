@@ -88,7 +88,28 @@ const guardarLocal = (clave, valor) => {localStorage.setItem(clave, valor)}
 
 for (const carpa of carpaArray){
     guardarLocal(carpa.id, JSON.stringify(carpaArray)) //almacena en el local
+
 }
+
+const busquedaLocalS = JSON.parse(localStorage.getItem(1));
+
+let numeros= parseInt(prompt("Ingrese numeros de personas 2,3,4,6"))
+
+console.log(busquedaLocalS);
+
+let findLocalStorage = busquedaLocalS.find(elemento =>{return  elemento.personas == numeros});
+
+alert(`la carpa que buscas es ${findLocalStorage.nombre}`);
+
+//agregar a la pagina un filtro
+
+// let cuerpoStorage = document.createElement("select");
+// cuerpoStorage.className = "selectStorage";
+// cuerpoStorage.innerHTML=`
+
+    
+
+
 
 //----------------------------------------------------------//
 
@@ -183,13 +204,16 @@ function dibujarCarrito(){
     let totalProductos = 1;
     let totalCantidad = 0;
 
+
     stockCarrito.forEach(
         (elemento) => {
 
         //agregar numero al boton Reservas
             
         const modalToggle = document.querySelector('#toggleMyModal');
+
         modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"></i> ${totalProductos}</span>`
+       
         totalProductos+=parseInt(elemento.cantidad);
         totalCantidad+=parseInt(elemento.cantidad) 
 
@@ -224,8 +248,9 @@ function dibujarCarrito(){
     );
 
 
+
     if(stockCarrito.length == 0){
-        
+
         contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>`;
     
     }else{
@@ -256,9 +281,11 @@ function dibujarCarrito(){
                 if (willDelete) {
                 swal("¡Felicitaciones! Tu reserva ha sido confirmada, revisa tu casilla de mensajes para mas informacion", {
                     icon: "success",
-               
                 });
-                
+               
+                stockCarrito=[];
+                dibujarCarrito();
+                                
                 } else {
                 swal("Puedes seguir con tu proceso cuando quieras");
                 } 
