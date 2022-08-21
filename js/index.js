@@ -80,9 +80,9 @@ function CargarCarpas(){
 CargarCarpas();
 dibujarCatalogoProductos()
 
-//------------------------------------------------------//
+//----------------------------------------------------------------------------------//
 
-//localstorage setear productos
+//localstorage setear productos (usada como base de datos)
 
 const guardarLocal = (clave, valor) => {localStorage.setItem(clave, valor)}
 
@@ -93,25 +93,69 @@ for (const carpa of carpaArray){
 
 const busquedaLocalS = JSON.parse(localStorage.getItem(1));
 
-let numeros= parseInt(prompt("Ingrese numeros de personas 2,3,4,6"))
-
 console.log(busquedaLocalS);
 
-let findLocalStorage = busquedaLocalS.find(elemento =>{return  elemento.personas == numeros});
+//buscardor en el dom
 
-alert(`la carpa que buscas es ${findLocalStorage.nombre}`);
+let inputBuscador2 = document.querySelector(".inputBuscador2");
+let inputBuscador3 = document.querySelector(".inputBuscador3");
+let inputBuscador4 = document.querySelector(".inputBuscador4");
+let inputBuscador6 = document.querySelector(".inputBuscador6");
+let contBtn =document.querySelector(".btn-group")
 
-//agregar a la pagina un filtro
 
-// let cuerpoStorage = document.createElement("select");
-// cuerpoStorage.className = "selectStorage";
-// cuerpoStorage.innerHTML=`
+contBtn.addEventListener("click", (e)=>{
+    e.preventDefault();
+
+    function mostrarRecomendado(){
+
+        if(e.target.classList.contains("inputBuscador2")){
+
+            let findLocalStorage = busquedaLocalS.find(elemento =>{return  elemento.personas == 2})
+
+            swal(`Tu mejor opción es ${findLocalStorage.nombre}`);
+        }
+        if(e.target.classList.contains("inputBuscador3")){
+
+            let findLocalStorage = busquedaLocalS.find(elemento =>{return  elemento.personas == 3})
+
+            swal(`Tu mejor opción es ${findLocalStorage.nombre}`);
+        }
+        if(e.target.classList.contains("inputBuscador4")){
+
+            let findLocalStorage = busquedaLocalS.find(elemento =>{return  elemento.personas == 4})
+
+            swal(`Tu mejor opción es ${findLocalStorage.nombre}`);
+
+        }else if(e.target.classList.contains("inputBuscador6")){
+
+            let findLocalStorage = busquedaLocalS.find(elemento =>{return  elemento.personas == 6})
+
+            swal(`Tu mejor opción es ${findLocalStorage.nombre}`);
+
+        }
+
+    }
+    mostrarRecomendado()
 
     
+})
 
 
+contBtn.innerHTML= `
+<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+<label class=" inputBuscador2 btn btn-outline-primary" for="btnradio1">2 personas</label>
 
-//----------------------------------------------------------//
+<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+<label class=" inputBuscador3 btn btn-outline-primary" for="btnradio2">3 personas</label>
+
+<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+<label class="inputBuscador4 btn btn-outline-primary" for="btnradio3">4 personas</label>
+
+<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+<label class="inputBuscador6 btn btn-outline-primary" for="btnradio3">6 personas</label>
+`
+//-------------------------------------------------------------------------------------//
 
 function dibujarCatalogoProductos(){
     contenedorProductos.innerHTML = "";
@@ -234,20 +278,18 @@ function dibujarCarrito(){
 
             let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
 
-            
-            
-
             inputCantidadProductos.addEventListener("change", (e)=>{
                 let nuevaCantidad = e.target.value;
                 elemento.cantidad = nuevaCantidad;
                
+
                 dibujarCarrito();
             })
 
         }
     );
 
-
+  
 
     if(stockCarrito.length == 0){
 

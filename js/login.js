@@ -5,6 +5,7 @@ const password = document.getElementById("pass");
 const password2 = document.getElementById("pass2");
 let btnLogin = document.getElementsByClassName("submitLogin")
 
+
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
 
@@ -12,7 +13,6 @@ form.addEventListener("submit", (e)=>{
 
     validate() 
     
-
 })
 
 //Regex para la validacion
