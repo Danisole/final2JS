@@ -207,6 +207,7 @@ body header .nav .ullNav a:hover {
 
 body header .parallax {
   position: relative;
+  height: 20vh;
   height: 100vh;
   width: 100%;
   padding: 100px;
@@ -571,5 +572,33 @@ body .scroll-top-btn:hover {
 body .scroll-top-btn .hidden {
   visibility: hidden;
   opacity: 0;
+}
+
+@media (max-width: 420px) {
+  .header {
+    min-height: 40%;
+  }
+  .header .nav {
+    width: 100%;
+    min-height: 8vh;
+  }
+  .header .nav #navLogo {
+    font-size: 10px;
+  }
+  #parallax {
+    padding: 0px;
+    margin-top: 100px;
+    height: 40%;
+  }
+  #cardSection {
+    padding: 0 0 100px 0;
+  }
+  #cardSection #h2Cards {
+    font-size: 20px;
+    margin-top: 100px;
+  }
+  #cardSection #mediaContain .h2Media {
+    font-size: 10px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

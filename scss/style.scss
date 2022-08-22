@@ -1,6 +1,8 @@
 @import 'global';
 @import 'mixin';
 
+
+
 body{
 
     /*Reservas*/
@@ -139,6 +141,7 @@ body{
 
     .parallax{
         position: relative;
+        height: 20vh;
         @include body(100vh, 100%);
         padding: 100px;
         @include section(flex, center, center);
@@ -425,3 +428,55 @@ body{
         }
     }
 }
+
+@media screen and(min-width: 420px) and (max-wid:992px) {
+    
+}
+
+
+@media (max-width: 420px){
+
+    .header{
+    min-height: 40%;
+
+        .nav{
+        width: 100%;
+        min-height: 8vh;
+
+        #navLogo{
+            font-size: 10px;
+        }
+        }
+
+      
+    }
+
+    #parallax{
+
+        padding: 0px;
+        margin-top: 100px;
+        height: 40%;
+
+
+        // display: none;
+        
+    }
+    #cardSection{
+        padding: 0 0 100px 0; 
+
+        #h2Cards{
+            font-size: 20px;
+            margin-top: 100px;
+        }
+
+        #mediaContain{
+            .h2Media{
+                font-size: 10px;
+            }
+        }
+    }
+
+
+        
+}
+
