@@ -35,7 +35,7 @@ const validate =()=>{
 
         inputError(username, message)
 
-    }else if(user.length < 2 || user.length > 30){
+    }else if(user.length < 2 || user.length > 30){  //comparacion or
         
             let message = "El nombre de usuario debe tener entre 2 y 30 caracteres"
             inputError(username,message )

@@ -437,18 +437,17 @@ body{
 @media (max-width: 420px){
 
     .header{
-    min-height: 40%;
+        min-height: 40%;
 
-        .nav{
-        width: 100%;
-        min-height: 8vh;
+            .nav{
+            width: 100%;
+            min-height: 8vh;
 
-        #navLogo{
-            font-size: 10px;
+                #navLogo{
+                    font-size: 10px;
+                }
         }
-        }
 
-      
     }
 
     #parallax{

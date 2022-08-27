@@ -26,15 +26,6 @@ botonParaSubir.addEventListener("click", ()=>{
     
 });
 
-// saludo
-
-logo.addEventListener("click", saludo)
-
-function saludo(e){
-    alert("Bienvenido a Aldea Glamping")
-    e.preventDefault()
-}
-
 // carpas constructor
 
 class Carpas{
