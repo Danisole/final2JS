@@ -107,6 +107,28 @@ const inputError = (input, message)=>{
 
 
 
+//api rest
+
+let pais = "us"
+let año = 2022
+let mes = 3
+let dia = 24
+
+const holidays = async(pais, año, mes, dia)=>{
+
+    let apiKey = "e67bf66973834fc2bd09d7570a9cdb0871111b34"
+    let api = `https://calendarific.com/api/v2/holidays?&api_key=${apiKey}&country=${pais}&day=${dia}&month=${mes}&year=${año}`
+
+    const response = await fetch(api)
+    const data = await response.json()
+    console.log(data)
+}
+
+holidays(pais, año, mes, dia)
+
+
+
+
 
 
 

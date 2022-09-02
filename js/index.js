@@ -304,7 +304,7 @@ function dibujarCarrito(){
     
 
     function condiconalVacio(){
-
+//librerias sweet alert
             swal({
                 title: "Esta seguro que desea confirmar tu reservación",
                 text: "Una vez confirmada se realizara el cobro de la estadía",
@@ -321,7 +321,7 @@ function dibujarCarrito(){
                
                 stockCarrito=[];
                 dibujarCarrito();
-                                
+
                 } else {
                 swal("Puedes seguir con tu proceso cuando quieras");
                 } 
