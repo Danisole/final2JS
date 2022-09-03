@@ -353,26 +353,26 @@ const displayInfo = (data) =>{
         let dataDate = data.response.holidays[i].date.datetime.day
         let dataCountry =data.response.holidays[i].country.name
           
-        feriadosOn.innerHTML=`
+        feriadosOn.innerHTML+=`
         <table class="table table-bordered" id="table>
                 <thead>
                   <tr>
+                    <th scope="col">#</th>
                     <th scope="col">nombre</th>
                     <th scope="col">fecha</th>
                     <th scope="col">pais</th>
                   </tr>
                 </thead>
-
                 <tbody>
                 <tr>
-                    <td scope="col">${dataName}</td>
-                    <td scope="col">${dataDate}</td>
-                    <td scope="col" >${dataCountry}</td>
+                    <td scope="row">${dataName}</td>
+                    <td scope="roy">${dataDate}</td>
+                    <td scope="row" >${dataCountry}</td>
                 </tr>
                 </tbody>
         </table>
         `
-        
+        //el codigo funciona solo debe configurarse la tabla
         }  
         
     }
@@ -392,13 +392,17 @@ const diasFeriados = async(pais, mes)=>{
     
    
 }
-diasFeriados(pais, mes);
 
-
-// botonInput.addEventListener("submit", (e)=>{
-//     e.preventDefault()
+searchCity.addEventListener("submit", (e)=>{
+    e.preventDefault()
+    // console.log(searchInputCiudad.value)
+    // console.log(searchInputMes.value)
+    feriadosOn.innerHTML=""
+    diasFeriados(searchInputCiudad.value, searchInputMes.value)
     
-// })
+} )
+
+
 
 
 
