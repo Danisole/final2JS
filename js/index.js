@@ -330,6 +330,77 @@ function dibujarCarrito(){
 };   };   
 
 
+//-------------------------api rest-----------------------------//
+
+const containerHolidays = document.getElementById("apiHolidays")
+const containerApi = document.getElementById("conteinerApi")
+const searchCity = document.getElementById("searchCity")
+const searchInputCiudad = document.getElementById("searchInputCiudad")
+const searchInputMes = document.getElementById("searchInputMes")
+const feriadosOn = document.getElementById("feriadosOn")
+
+
+
+
+let pais = "ar" //prompt("ingrese pais")
+let mes = 5 //prompt("ingrese mes")
+
+const displayInfo = (data) =>{
+
+    const infoInput = ()=>{
+        for(i=0; i<=data.response.holidays.length;i++){
+        let dataName = data.response.holidays[i].name
+        let dataDate = data.response.holidays[i].date.datetime.day
+        let dataCountry =data.response.holidays[i].country.name
+          
+        feriadosOn.innerHTML=`
+        <table class="table table-bordered" id="table>
+                <thead>
+                  <tr>
+                    <th scope="col">nombre</th>
+                    <th scope="col">fecha</th>
+                    <th scope="col">pais</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td scope="col">${dataName}</td>
+                    <td scope="col">${dataDate}</td>
+                    <td scope="col" >${dataCountry}</td>
+                </tr>
+                </tbody>
+        </table>
+        `
+        
+        }  
+        
+    }
+   infoInput()
+
+}
+const diasFeriados = async(pais, mes)=>{
+
+    let apiKey = "e67bf66973834fc2bd09d7570a9cdb0871111b34"
+    let api = `https://calendarific.com/api/v2/holidays?&api_key=${apiKey}&country=${pais}&month=${mes}&year=2022`
+
+    const response = await fetch(api)
+    const data  = await response.json()
+   // const err = console.log(err)  chequearlo
+
+    displayInfo(data)
+    
+   
+}
+diasFeriados(pais, mes);
+
+
+// botonInput.addEventListener("submit", (e)=>{
+//     e.preventDefault()
+    
+// })
+
+
 
 
 

@@ -107,51 +107,6 @@ const inputError = (input, message)=>{
 
 
 
-//api rest
-
-const containerHolidays = document.getElementById("apiHolidays")
-const botonInput = document.getElementById("btnTrad")
-const feriadosInput = document.getElementById("feriadosInput")
-
-
-let pais = prompt("ingrese pais")
-let año = 2022
-let mes = prompt("ingrese mes")
-
-const displayInfo = (data) =>{
-
-    const infoInput = ()=>{
-        for(i=0; i<=data.response.holidays.length;i++){
-        console.log(data.response.holidays[i].name)
-        console.log(data.response.holidays[i].date.datetime.day)
-        }
-        
-    }
-   infoInput()
-}
-
-
-const diasFeriados = async(pais, año, mes)=>{
-
-    let apiKey = "e67bf66973834fc2bd09d7570a9cdb0871111b34"
-    let api = `https://calendarific.com/api/v2/holidays?&api_key=${apiKey}&country=${pais}&month=${mes}&year=${año}`
-
-    const response = await fetch(api)
-    const data  = await response.json()
-   // const err = console.log(err)  chequearlo
-
-    displayInfo(data)
-   
-}
-diasFeriados(pais, año, mes);
-
-
-// botonInput.addEventListener("submit", (e)=>{
-//     e.preventDefault()
-    
-// })
-
-
 
 
 
