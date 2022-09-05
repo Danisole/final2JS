@@ -344,6 +344,7 @@ const feriadosOn = document.getElementById("feriadosOn")
 
 let pais = "ar" //prompt("ingrese pais")
 let mes = 5 //prompt("ingrese mes")
+let posicion = 0
 
 const displayInfo = (data) =>{
 
@@ -352,12 +353,13 @@ const displayInfo = (data) =>{
         let dataName = data.response.holidays[i].name
         let dataDate = data.response.holidays[i].date.datetime.day
         let dataCountry =data.response.holidays[i].country.name
+        
           
         feriadosOn.innerHTML+=`
         <table class="table table-bordered" id="table>
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">nombre</th>
                     <th scope="col">fecha</th>
                     <th scope="col">pais</th>
@@ -365,14 +367,16 @@ const displayInfo = (data) =>{
                 </thead>
                 <tbody>
                 <tr>
-                    <td scope="row">${dataName}</td>
-                    <td scope="roy">${dataDate}</td>
-                    <td scope="row" >${dataCountry}</td>
+                    
+                    <td style="width: 300px; height: 20px"  scope="row">${dataName}</td>
+                    <td style="width: 300px; height: 20px" scope="roy">${dataDate}</td>
+                    <td style="width: 300px; height: 20px" scope="row" >${dataCountry}</td>
                 </tr>
                 </tbody>
         </table>
         `
         //el codigo funciona solo debe configurarse la tabla
+        //funciona con los codigos de los paises de dos letras y el numero del mes ambos a arrelgar
         }  
         
     }
@@ -381,7 +385,7 @@ const displayInfo = (data) =>{
 }
 const diasFeriados = async(pais, mes)=>{
 
-    let apiKey = "e67bf66973834fc2bd09d7570a9cdb0871111b34"
+    let apiKey = "5030d15789e231e43c0271f2723d21f107a9d932"
     let api = `https://calendarific.com/api/v2/holidays?&api_key=${apiKey}&country=${pais}&month=${mes}&year=2022`
 
     const response = await fetch(api)
