@@ -16,38 +16,30 @@
 
     <header class="headerLogin">
         
-        <nav class="navLogin">
-            <div class="navLogo">
-                <a href="./index.html"><img class="logo" src="./assets/logos/logoSinFondo.png" alt="logo"></a>
+        <nav class="navbar navbar-expand-lg  navLogin ullNav">
+            <div class="container-fluid">
+                <a href="./index.html" class="bg-transparent"><img class="logo" src="./assets/logos/logoSinFondo.png" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-4">
+                  <li class="nav-item">
+                    <a class="nav-link active " aria-current="page" href="./index.html">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./reservas.html">Reservas</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./index.html#mediaContain">Nosotros</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./login.html">Logueate</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-
-            <nav class="navbar navbar-expand-lg  ullNav">
-                <div class="container-fluid">
-                  
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href="./index.html">Inicio</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="./reservas.html">Reservas</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="./index.html#mediaContain">Nosotros</a>
-                      </li>
-                      <li class="nav-item navMenuItems">
-                        <a class="nav-link" href="./login.html">Logueate</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
-            
-            
-        </nav>
+          </nav>
     </header>  
 
     <section class="containerFormLogin">
@@ -83,6 +75,15 @@
                         <input type="text" name="" id="pass2" placeholder="*******">
                         <small></small>
                     </label>
+                </div>
+
+                <div class="checkbox-text">
+                    <div class="checkbox-content">
+                        <input type="checkbox" id="logCheck">
+                        <label for="logCheck" class="text">Remember me</label>
+                    </div>
+
+                    <a href="#" class="textA">Forgot password?</a>
                 </div>
 
                 <button class="submitLogin">Suscribirse</button>

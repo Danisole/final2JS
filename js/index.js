@@ -6,25 +6,33 @@ const logo = document.querySelector('.logo');
 const botonParaSubir = document.querySelector("button");
 const nombreUsuario = document.getElementById("usuario");
 const contenedor = document.getElementById("contenedorCarpas");
+//Api------------
+const containerHolidays = document.getElementById("apiHolidays")
+const containerApi = document.getElementById("containerApi")
+const searchCity = document.getElementById("searchCity")
+const searchInputCiudad = document.getElementById("searchInputCiudad")
+const searchInputMes = document.getElementById("searchInputMes")
+const feriadosOn = document.getElementById("feriadosOn")
+const feriadosInput = document.getElementById("feriadosInput")
 
 
 
 
 
 window.addEventListener('scroll', (e) =>{
-    // let value = w.scrollY; 
-    // title.style.marginTop = value * .7 + 'px';
-    // nav.classList.toggle('active', window.scrollY > 0);
-    // logo.classList.toggle('active', window.scrollY > 0);
+    let value = w.scrollY; 
+    title.style.marginTop = value * .7 + 'px';
+    nav.classList.toggle('active', window.scrollY > 0);
+    logo.classList.toggle('active', window.scrollY > 0);
 });
 
-// agregar eventos
 
-botonParaSubir.addEventListener("click", ()=>{
 
-    window.scrollTo(0, 0);
+// botonParaSubir.addEventListener("click", ()=>{
+
+//     window.scrollTo(0, 0);
     
-});
+// });
 
 // carpas constructor
 
@@ -293,9 +301,7 @@ function dibujarCarrito(){
         contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Total de la reserva $ ${totalCarrito}, ${totalCantidad} carpas reservadas</th>`
     };
 
-    //variables de los botones reservar y cerrar(suspenso)
-
-    const cerrarCarrito = document.querySelector("#modalFooterClose");
+    
     const reservarCarrito = document.querySelector("#modalFooterReserv");
 
     //confirmacion de la reserva (suspenso)
@@ -332,60 +338,58 @@ function dibujarCarrito(){
 
 //-------------------------api rest-----------------------------//
 
-const containerHolidays = document.getElementById("apiHolidays")
-const containerApi = document.getElementById("conteinerApi")
-const searchCity = document.getElementById("searchCity")
-const searchInputCiudad = document.getElementById("searchInputCiudad")
-const searchInputMes = document.getElementById("searchInputMes")
-const feriadosOn = document.getElementById("feriadosOn")
-
-
-
-
 let pais = "ar" //prompt("ingrese pais")
 let mes = 5 //prompt("ingrese mes")
 let posicion = 0
 
 const displayInfo = (data) =>{
 
-    const infoInput = ()=>{
-        for(i=0; i<=data.response.holidays.length;i++){
-        let dataName = data.response.holidays[i].name
-        let dataDate = data.response.holidays[i].date.datetime.day
-        let dataCountry =data.response.holidays[i].country.name
-        
-          
-        feriadosOn.innerHTML+=`
-        <table class="table table-bordered" id="table>
-                <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">nombre</th>
-                    <th scope="col">fecha</th>
-                    <th scope="col">pais</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    
-                    <td style="width: 300px; height: 20px"  scope="row">${dataName}</td>
-                    <td style="width: 300px; height: 20px" scope="roy">${dataDate}</td>
-                    <td style="width: 300px; height: 20px" scope="row" >${dataCountry}</td>
-                </tr>
-                </tbody>
-        </table>
-        `
-        //el codigo funciona solo debe configurarse la tabla
-        //funciona con los codigos de los paises de dos letras y el numero del mes ambos a arrelgar
-        }  
-        
+    if(searchInputCiudad.value != "" || searchInputMes.value != ""){
+
+        const infoInput = ()=>{
+            for(i=0; i<=data.response.holidays.length;i++){
+            let dataName = data.response.holidays[i].name
+            let dataDate = data.response.holidays[i].date.datetime.day
+            let dataCountry =data.response.holidays[i].country.name
+            let dataCodigoPais = data.response.holidays[i].country.id
+
+            feriadosOn.innerHTML+=`
+            <table class="table table-bordered" id="table>
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Dia</th>
+                        <th scope="col">Pais</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        
+                        <td style="width: 300px; height: 20px"  scope="row">${dataName}</td>
+                        <td style="width: 300px; height: 20px" scope="row">${dataDate}</td>
+                        <td style="width: 300px; height: 20px" scope="row" >${dataCountry}</td>
+                    </tr>
+                    </tbody>
+            </table>
+            `
+            }  
+            
+        }
+
+        infoInput()
+
+    }else{
+
+        swal("Debes seleccionar tu pais para continuar");
     }
-   infoInput()
+
+  
 
 }
 const diasFeriados = async(pais, mes)=>{
 
-    let apiKey = "5030d15789e231e43c0271f2723d21f107a9d932"
+    let apiKey = "767f0ffc36711d37cd435865654382cca13ffbae"
     let api = `https://calendarific.com/api/v2/holidays?&api_key=${apiKey}&country=${pais}&month=${mes}&year=2022`
 
     const response = await fetch(api)

@@ -6,10 +6,10 @@ const password2 = document.getElementById("pass2");
 let btnLogin = document.getElementsByClassName("submitLogin")
 
 
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
 
-    //Utilizacion de operador ternario
+form.addEventListener("submit", (e)=>{
+    
+    e.preventDefault();
 
     validate() 
     
@@ -26,6 +26,25 @@ const validate =()=>{
     const mail = email.value.trim();
     const pass = password.value.trim();
     const pass2 = password2.value.trim();
+
+    //---------------logueo-----------------//
+
+    let usuarioLocal = {
+        
+        user: user,
+        mail: mail,
+        pass: pass,
+        pass2: pass2
+    }
+
+    let jsonLocal = JSON.stringify(usuarioLocal);
+    localStorage.setItem("usuario", jsonLocal)
+    console.log("user add")
+
+    
+
+
+   
 
 
     //comprobaciones

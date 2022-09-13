@@ -12,7 +12,7 @@ body{
         padding-top: 10vh;
 
         .navReservas{
-            min-height: 11vh;
+            min-height: 9vh;
             background:#caf0f8;
             position: fixed;
             top: 0;
@@ -20,6 +20,10 @@ body{
             width: 100%;
             @include section(flex, space-around, center);
             z-index: 100000000;
+
+            .logo{
+                max-width: 70%;
+            }
         }
 
         .ullNav{
@@ -41,6 +45,49 @@ body{
                 }
             }
         }
+
+        .modal{
+            margin: 10vh 0 0 0;
+        }
+    }
+    .apiHolidays{
+        background-color:rgba(191,157,129,1);
+        max-height: 200vh;
+        padding-top: 3vh;
+        padding-bottom: 50px;
+        
+
+        .inputApi{
+            margin-bottom: 4vh;
+        }
+
+        .h4Api{
+            font-size: 18px;
+            display: flex;
+            margin: 10px;
+        }
+        
+        .btnBuscarTuPais{
+            width: 150px;
+            height: 40px;
+            border-radius: 20px;
+            color: #ffff;
+            background-color: rgba(30, 82, 137, 0.808);
+            &:hover{
+                background-color: rgba(6, 40, 75, 0.808);
+            }
+        
+        .lableSearchCity{
+
+            select{
+                border-radius: 10px;
+                width: 150px;
+            }
+        }
+            
+        }
+
+
     }
 
 
@@ -61,6 +108,10 @@ body{
                 width: 100%;
                 @include section(flex, space-around, center);
                 z-index: 100000000;
+
+                .logo{
+                    max-width: 70%;
+                }
             }
 
             .ullNav{
@@ -83,41 +134,28 @@ body{
                 }
             }
         }
-        .containerFormLogin{
-            
-        }
+        
 
 
     /*la nav*/
 
     header{
     min-height: 100vh;
-    background: linear-gradient(#caf0f8, #0496FF);
-
-    .nav{
+    
+    .navIndex{
+        min-height: 11vh;
+        background:#caf0f8;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         @include section(flex, space-around, center);
-        background: #caf0f8;
         z-index: 100000000;
 
-        &.active{
-            background-color: #f8f9fa;
-            height: 70px;
-            transition: .7s linear;          
-            
-        }
         .logo{
-            
-            &.active{
-            transform: scale(0.5);
-            transition: .7s;
-            } 
+          max-width: 80%;
         }
         
-
         .ullNav{
             @include section(flex, space-between, center);
             gap: 30px;
@@ -139,8 +177,10 @@ body{
         }
 
     }
+    }  
 
     .parallax{
+        background: linear-gradient(#caf0f8, #0496FF);
         position: relative;
         height: 20vh;
         @include body(100vh, 100%);
@@ -172,7 +212,7 @@ body{
             color: #00296b; 
         }
     }
-    }
+    
 
     .cardSection{
 
@@ -329,6 +369,16 @@ body{
                         }   
                     }
                 }
+
+                .checkbox-text{
+                    display: flex;
+                    justify-content: space-between;
+
+                    .textA{
+                        text-decoration: none;
+                        color: #1b4d9f;
+                    }
+                }
             
                 .submitLogin{
                 
@@ -340,6 +390,11 @@ body{
                     color: white;
                     font-size: 1.2em;
                     margin-top: 4%;
+
+                    &:hover{
+                        background-color:rgba(29, 50, 75, 0.808);
+                        
+                    }
                 }
 
             }
@@ -347,6 +402,7 @@ body{
             }      
     }
         
+
     footer{
         background-color: black;
         width: auto;
@@ -435,71 +491,71 @@ body{
 }
 
 
-@media (max-width: 420px){
+// @media (max-width: 420px){
 
-    .header{
-        min-height: 40%;
+//     .header{
+//         min-height: 40%;
 
-            // .nav{
-            // width: 100%;
-            // min-height: 8vh;
+//             .nav.navReservas.navLogin{
+//             width: 100%;
+//             min-height: 8vh;
 
-            //     #navLogo{
-            //         font-size: 10px;
-            //     }
+//                 .logo{
+//                     max-width: 60%;
+//                 }
+//             }
+
+//     }
+
+//     #parallax{
+
+//         padding: 0px;
+//         margin-top: 100px;
+//         height: 500px;
+
+//         #portada{
+//             height: 100%;
+//         }
+//         #montañas{
+//             height: 100%;
+//         }
+
+//         #title{
+//             font-size: 60px;
+//         }
+
+//         // display: none;
         
+//     }
+//     #cardSection{
+//         padding: 50px 0 100px 0; 
+//         margin: 0;
+//         gap: 5px;
 
-    }
-
-    #parallax{
-
-        padding: 0px;
-        margin-top: 100px;
-        height: 500px;
-
-        #portada{
-            height: 100%;
-        }
-        #montañas{
-            height: 100%;
-        }
-
-        #title{
-            font-size: 60px;
-        }
-
-        // display: none;
-        
-    }
-    #cardSection{
-        padding: 50px 0 100px 0; 
-        margin: 0;
-        gap: 5px;
-
-        #h2Cards{
-            font-size: 20px;
+//         #h2Cards{
+//             font-size: 20px;
             
-        }
+//         }
 
-        #mediaContain{
+//         #mediaContain{
 
-            height: 500px;
-            flex-direction: column;
+//             height: 500px;
+//             flex-direction: column;
 
-            .h2Media{
-                font-size: 10px;
-            }
-            .imgMedio{
-                height: 60%;
-                width: 60%;
-            }
-            .mediaTxt{
+//             .h2Media{
+//                 font-size: 10px;
+//             }
+//             .imgMedio{
+//                 height: 60%;
+//                 width: 60%;
+//             }
+//             .mediaTxt{
 
-            }
-        }
-    }
+//             }
+//         }
+//     }
 
 
         
-}
+// }
 

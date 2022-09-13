@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="es">
@@ -14,40 +13,38 @@
 </head>
 
 <body>
-
     <header class="headerReservas">
-        <nav class="navReservas">
-            <div class="navLogo">
-                <a href="./index.html"><img class="logo" src="./assets/logos/logoSinFondo.png" alt="logo"></a>
-            </div>
-            
-            <nav class="navbar navbar-expand-lg  ullNav">
-                <div class="container-fluid">
-                  
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href="./index.html">Inicio</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="./reservas.html">Reservas</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="./index.html#mediaContain">Nosotros</a>
-                      </li>
-                      <li class="nav-item navMenuItems">
-                        <a class="nav-link" href="./login.html">Logueate</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-            </nav>               
 
+    <nav class="navReservas navbar navbar-expand-lg   ullNav">
+        <div class="container-fluid">
+            <a href="./index.html" class="bg-transparent"><img class="logo" src="./assets/logos/logoSinFondo.png" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav gap-4">
+              <li class="nav-item">
+                <a class="nav-link active " aria-current="page" href="./index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./reservas.html">Reservas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html#mediaContain">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./login.html">Logueate</a>
+              </li>
+              <!-- Button trigger modal -->
+                <button id="toggleMyModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Reservas  <i class="fas fa-shopping-cart"></i>  
+                </button>
+            </ul>
+          </div>
+        </div>
+      </nav>
                 <!-- Modal -->
-                <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade mt-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -84,20 +81,11 @@
                         </div>
                     </div>
                 </div>
-
-            <!-- Button trigger modal -->
-                <button id="toggleMyModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Reservas  <i class="fas fa-shopping-cart"></i>  
-                </button></li>
-            </ul>
-
-                        
-        </nav>
     </header> 
 
     <!-- buscador traido de js -->
-    <h3 class="d-flex justify-content-center">Busqueda rapida</h3>
-    <div class="btn-group d-flex justify-content-center d-grid gap-2 col-6 mx-auto" role="group" aria-label="Basic radio toggle button group">
+    <h3 class="d-flex justify-content-center mt-5">Busqueda rapida</h3>
+    <div class="btn-group d-flex justify-content-center d-grid gap-2 col-6 mx-auto mt-3" role="group" aria-label="Basic radio toggle button group">
         
     </div>
 
@@ -113,16 +101,34 @@
 
     <!-- seccion de api rest -->
 
-    <section id="apiHolidays h-100" class="">
+    <section id="apiHolidays h-100 " class="apiHolidays">
         <h3 class="d-flex justify-content-center mt-5">Consulta los feriados de tu pais</h3>
+        <h4 class=" h4Api d-flex justify-content-center mt-5">Aldea Glamping pone a tu disposición un buscador para que puedas encontrar los feriados de tu pais y así organizar tus vacaciones soñadas</h4>
 
         <div class="containerApi " id="conteinerApi">
             <div class="inputApi">
                 <form action="" class="searchCity" id="searchCity">
-                    <label type="text" for="" class="d-flex justify-content-center gap-2 mt-5">Busca tu ciudad
-                        <input type="text" class="searchInput1" id="searchInputCiudad" placeholder="tu ciudad">
-                        <input type="number" min="1" max="12" class="searchInput2" id="searchInputMes" placeholder="mes">
-                        <button type="submit">Buscar</button>
+                    <label type="text" for="" class="lableSearchCity d-flex justify-content-center gap-2 mt-5">Busca tu pais
+                        <select name="pais" id="searchInputCiudad" class="searchInput1">
+                            
+                        </select>
+                        <select name="" id="searchInputMes" class="searchInput2">
+                            <option value="#">Selecciona un mes</option>
+                            <option value="1">Enero</option>
+                            <option value="2">Febrero</option>
+                            <option value="3">Marzo</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Mayo</option>
+                            <option value="6">Junio</option>
+                            <option value="7">Julio</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+
+                        <button type="submit" class="btnBuscarTuPais">Buscar</button>
                     </label>
                 </form>
             </div>

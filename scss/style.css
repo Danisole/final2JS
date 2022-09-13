@@ -40,7 +40,7 @@ body .headerReservas {
 }
 
 body .headerReservas .navReservas {
-  min-height: 11vh;
+  min-height: 9vh;
   background: #caf0f8;
   position: fixed;
   top: 0;
@@ -55,6 +55,10 @@ body .headerReservas .navReservas {
       -ms-flex-align: center;
           align-items: center;
   z-index: 100000000;
+}
+
+body .headerReservas .navReservas .logo {
+  max-width: 70%;
 }
 
 body .headerReservas .ullNav {
@@ -86,6 +90,46 @@ body .headerReservas .ullNav a:hover {
   transition: .7s;
 }
 
+body .headerReservas .modal {
+  margin: 10vh 0 0 0;
+}
+
+body .apiHolidays {
+  background-color: #bf9d81;
+  max-height: 200vh;
+  padding-top: 3vh;
+  padding-bottom: 50px;
+}
+
+body .apiHolidays .inputApi {
+  margin-bottom: 4vh;
+}
+
+body .apiHolidays .h4Api {
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px;
+}
+
+body .apiHolidays .btnBuscarTuPais {
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  color: #ffff;
+  background-color: rgba(30, 82, 137, 0.808);
+}
+
+body .apiHolidays .btnBuscarTuPais:hover {
+  background-color: rgba(6, 40, 75, 0.808);
+}
+
+body .apiHolidays .btnBuscarTuPais .lableSearchCity select {
+  border-radius: 10px;
+  width: 150px;
+}
+
 body .headerLogin {
   background: none;
   min-height: 0;
@@ -108,6 +152,10 @@ body .headerLogin .navLogin {
       -ms-flex-align: center;
           align-items: center;
   z-index: 100000000;
+}
+
+body .headerLogin .navLogin .logo {
+  max-width: 70%;
 }
 
 body .headerLogin .ullNav {
@@ -141,11 +189,11 @@ body .headerLogin .ullNav a:hover {
 
 body header {
   min-height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(#caf0f8), to(#0496FF));
-  background: linear-gradient(#caf0f8, #0496FF);
 }
 
-body header .nav {
+body header .navIndex {
+  min-height: 11vh;
+  background: #caf0f8;
   position: fixed;
   top: 0;
   left: 0;
@@ -158,25 +206,14 @@ body header .nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #caf0f8;
   z-index: 100000000;
 }
 
-body header .nav.active {
-  background-color: #f8f9fa;
-  height: 70px;
-  -webkit-transition: .7s linear;
-  transition: .7s linear;
+body header .navIndex .logo {
+  max-width: 80%;
 }
 
-body header .nav .logo.active {
-  -webkit-transform: scale(0.5);
-          transform: scale(0.5);
-  -webkit-transition: .7s;
-  transition: .7s;
-}
-
-body header .nav .ullNav {
+body header .navIndex .ullNav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -189,7 +226,7 @@ body header .nav .ullNav {
   gap: 30px;
 }
 
-body header .nav .ullNav a {
+body header .navIndex .ullNav a {
   padding: 6px 15px;
   color: #00296b;
   font-size: 22px;
@@ -198,14 +235,16 @@ body header .nav .ullNav a {
   border-radius: 20px;
 }
 
-body header .nav .ullNav a:hover {
+body header .navIndex .ullNav a:hover {
   background: #fff;
   color: #0496FF;
   -webkit-transition: .7s;
   transition: .7s;
 }
 
-body header .parallax {
+body .parallax {
+  background: -webkit-gradient(linear, left top, left bottom, from(#caf0f8), to(#0496FF));
+  background: linear-gradient(#caf0f8, #0496FF);
   position: relative;
   height: 20vh;
   height: 100vh;
@@ -222,7 +261,7 @@ body header .parallax {
           align-items: center;
 }
 
-body header .parallax .portada {
+body .parallax .portada {
   position: absolute;
   top: 0;
   left: 0;
@@ -233,7 +272,7 @@ body header .parallax .portada {
   z-index: 13;
 }
 
-body header .parallax .montañas {
+body .parallax .montañas {
   position: absolute;
   top: 0;
   left: 0;
@@ -244,7 +283,7 @@ body header .parallax .montañas {
   z-index: 9;
 }
 
-body header .parallax .title {
+body .parallax .title {
   font-family: 'MonteCarlo', cursive;
   font-size: 170px;
   z-index: 10;
@@ -454,6 +493,20 @@ body .containerFormLogin .container .formLogin .form-control label input {
   margin-top: 10px;
 }
 
+body .containerFormLogin .container .formLogin .checkbox-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .containerFormLogin .container .formLogin .checkbox-text .textA {
+  text-decoration: none;
+  color: #1b4d9f;
+}
+
 body .containerFormLogin .container .formLogin .submitLogin {
   background-color: rgba(43, 71, 104, 0.808);
   border: rgba(43, 71, 104, 0.808) solid 2px;
@@ -463,6 +516,10 @@ body .containerFormLogin .container .formLogin .submitLogin {
   color: white;
   font-size: 1.2em;
   margin-top: 4%;
+}
+
+body .containerFormLogin .container .formLogin .submitLogin:hover {
+  background-color: rgba(29, 50, 75, 0.808);
 }
 
 body footer {
@@ -572,47 +629,5 @@ body .scroll-top-btn:hover {
 body .scroll-top-btn .hidden {
   visibility: hidden;
   opacity: 0;
-}
-
-@media (max-width: 420px) {
-  .header {
-    min-height: 40%;
-  }
-  #parallax {
-    padding: 0px;
-    margin-top: 100px;
-    height: 500px;
-  }
-  #parallax #portada {
-    height: 100%;
-  }
-  #parallax #montañas {
-    height: 100%;
-  }
-  #parallax #title {
-    font-size: 60px;
-  }
-  #cardSection {
-    padding: 50px 0 100px 0;
-    margin: 0;
-    gap: 5px;
-  }
-  #cardSection #h2Cards {
-    font-size: 20px;
-  }
-  #cardSection #mediaContain {
-    height: 500px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  #cardSection #mediaContain .h2Media {
-    font-size: 10px;
-  }
-  #cardSection #mediaContain .imgMedio {
-    height: 60%;
-    width: 60%;
-  }
 }
 /*# sourceMappingURL=style.css.map */
