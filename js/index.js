@@ -6,6 +6,7 @@ const logo = document.querySelector('.logo');
 const botonParaSubir = document.querySelector("button");
 const nombreUsuario = document.getElementById("usuario");
 const contenedor = document.getElementById("contenedorCarpas");
+const eliminar = document.getElementById("btnEliminar")
 //Api------------
 const containerHolidays = document.getElementById("apiHolidays")
 const containerApi = document.getElementById("containerApi")
@@ -18,13 +19,12 @@ const feriadosInput = document.getElementById("feriadosInput")
 
 
 
-
-window.addEventListener('scroll', (e) =>{
-    let value = w.scrollY; 
-    title.style.marginTop = value * .7 + 'px';
-    nav.classList.toggle('active', window.scrollY > 0);
-    logo.classList.toggle('active', window.scrollY > 0);
-});
+// window.addEventListener('scroll', (e) =>{
+//     let value = w.scrollY; 
+//     title.style.marginTop = value * .7 + 'px';
+//     nav.classList.toggle('active', window.scrollY > 0);
+//     logo.classList.toggle('active', window.scrollY > 0);
+// });
 
 
 
@@ -244,6 +244,7 @@ function crearCard(producto){
 }
 
 function dibujarCarrito(){
+
     contenedorCarritoReservas.innerHTML = "";
 
     let totalCarrito = 0;
@@ -264,6 +265,7 @@ function dibujarCarrito(){
         totalCantidad+=parseInt(elemento.cantidad) 
 
             let renglonCarrito = document.createElement("tr");
+            renglonCarrito.classList.add("renglonCarrito")
 
             renglonCarrito.innerHTML = `
             <td>${elemento.producto.id}</td>
@@ -271,6 +273,7 @@ function dibujarCarrito(){
             <td><input id="cantidad-producto-${elemento.producto.id}" type="number" value="${elemento.cantidad}" min="1" max="3" step="1" style="width:70px"</td>
             <td>${elemento.producto.precio}</td>
             <td>${elemento.producto.precio*elemento.cantidad}</td>
+            <td><button class="btn btnEliminar btn-light"><i class="fas fa-trash"></i></button>
 
             `;
             contenedorCarritoReservas.append(renglonCarrito)
@@ -278,16 +281,28 @@ function dibujarCarrito(){
             totalCarrito+=elemento.producto.precio*elemento.cantidad;
             contenedorCarritoReservas.append(renglonCarrito);
 
+            contenedorCarritoReservas.querySelector(".btnEliminar").addEventListener("click", removeItem)
+            
+
+
+
             let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
 
             inputCantidadProductos.addEventListener("change", (e)=>{
                 let nuevaCantidad = e.target.value;
                 elemento.cantidad = nuevaCantidad;
-               
 
                 dibujarCarrito();
             })
 
+            function removeItem(event){
+                const buttonClicked = event.target;
+                buttonClicked.closest(".renglonCarrito").remove();
+
+                stockCarrito=[]
+                dibujarCarrito();
+            }
+            
         }
     );
 
@@ -308,6 +323,7 @@ function dibujarCarrito(){
 
     reservarCarrito.addEventListener("click", condiconalVacio);
     
+    //mensaje al reservar 
 
     function condiconalVacio(){
 //librerias sweet alert

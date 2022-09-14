@@ -8,7 +8,7 @@ body{
     /*Reservas*/
     .headerReservas{
         background: none;
-        min-height: 15vh;
+        min-height: 12vh;
         padding-top: 10vh;
 
         .navReservas{
@@ -44,12 +44,16 @@ body{
                     transition: .7s;
                 }
             }
+
+            
         }
 
-        .modal{
-            margin: 10vh 0 0 0;
-        }
+        .modalReservas{
+                #{$prefix}modal-zindex: #{$zindex-modal}
+            }
     }
+   
+
     .apiHolidays{
         background-color:rgba(191,157,129,1);
         max-height: 200vh;
