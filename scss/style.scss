@@ -19,11 +19,13 @@ body{
             left: 0;
             width: 100%;
             @include section(flex, space-around, center);
-            z-index: 100000000;
+            z-index: 10;
 
             .logo{
                 max-width: 70%;
             }
+
+            
         }
 
         .ullNav{
@@ -48,11 +50,9 @@ body{
             
         }
 
-        .modalReservas{
-                #{$prefix}modal-zindex: #{$zindex-modal}
-            }
+        
     }
-   
+  
 
     .apiHolidays{
         background-color:rgba(191,157,129,1);
@@ -448,11 +448,12 @@ body{
             .pFooter{
                 color: #f8f9fa;
                 word-spacing: 3px;
+                font-size: 14px;
                 
 
                 .nick{
                     color:#ff5d8f ;
-                    font-size: 20px;
+                    font-size: 15px;
                     &:hover{
 
                         color:#ff0054;

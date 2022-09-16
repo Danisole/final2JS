@@ -35,7 +35,7 @@ body {
 
 body .headerReservas {
   background: none;
-  min-height: 15vh;
+  min-height: 12vh;
   padding-top: 10vh;
 }
 
@@ -54,7 +54,7 @@ body .headerReservas .navReservas {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 100000000;
+  z-index: 10;
 }
 
 body .headerReservas .navReservas .logo {
@@ -88,10 +88,6 @@ body .headerReservas .ullNav a:hover {
   color: #0496FF;
   -webkit-transition: .7s;
   transition: .7s;
-}
-
-body .headerReservas .modal {
-  margin: 10vh 0 0 0;
 }
 
 body .apiHolidays {
@@ -592,11 +588,12 @@ body footer .containFooter {
 body footer .containFooter .pFooter {
   color: #f8f9fa;
   word-spacing: 3px;
+  font-size: 14px;
 }
 
 body footer .containFooter .pFooter .nick {
   color: #ff5d8f;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 body footer .containFooter .pFooter .nick:hover {
