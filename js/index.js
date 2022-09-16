@@ -241,6 +241,8 @@ function crearCard(producto){
     }
 
     return carta
+
+    
 }
 
 function dibujarCarrito(){
@@ -259,13 +261,14 @@ function dibujarCarrito(){
             
         const modalToggle = document.querySelector('#toggleMyModal');
 
-        modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"></i> ${totalProductos}</span>`
+        modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"></i></span>`
        
         totalProductos+=parseInt(elemento.cantidad);
         totalCantidad+=parseInt(elemento.cantidad) 
 
             let renglonCarrito = document.createElement("tr");
-            renglonCarrito.classList.add("renglonCarrito")
+            renglonCarrito.classList.add("renglonCarrito");
+            
 
             renglonCarrito.innerHTML = `
             <td>${elemento.producto.id}</td>
@@ -273,19 +276,18 @@ function dibujarCarrito(){
             <td><input id="cantidad-producto-${elemento.producto.id}" type="number" value="${elemento.cantidad}" min="1" max="3" step="1" style="width:70px"</td>
             <td>${elemento.producto.precio}</td>
             <td>${elemento.producto.precio*elemento.cantidad}</td>
-            <td><button class="btn btnEliminar btn-light"><i class="fas fa-trash"></i></button>
+            <td>
+            <button class="btn btnEliminar btn-light" id="btn${elemento.producto.id}">
+            <i class="fas fa-trash"></i>
+            </button>
+            </td>
 
             `;
-            contenedorCarritoReservas.append(renglonCarrito)
-
             totalCarrito+=elemento.producto.precio*elemento.cantidad;
             contenedorCarritoReservas.append(renglonCarrito);
 
-            contenedorCarritoReservas.querySelector(".btnEliminar").addEventListener("click", removeItem)
+
             
-
-
-
             let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
 
             inputCantidadProductos.addEventListener("change", (e)=>{
@@ -295,13 +297,31 @@ function dibujarCarrito(){
                 dibujarCarrito();
             })
 
-            function removeItem(event){
-                const buttonClicked = event.target;
-                buttonClicked.closest(".renglonCarrito").remove();
+            //Boton eliminar
 
-                stockCarrito=[]
+            let borrarProducto = document.getElementById(`btn${elemento.producto.id}`);
+            
+            borrarProducto.addEventListener("click", (e)=>{
+                
+                renglonCarrito.remove()
+                console.log("esto hace algo")
+
+                
+            })
+            // totalCarrito-=elemento.producto.precio
+            // totalCantidad-= elemento.cantidad
+            // contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Total de la reserva $ ${totalCarrito}, ${totalCantidad} carpas reservadas</th>`
+            
+
+            let vaciarCarritoTotal = document.getElementById("modalFooterEmpty");
+
+            vaciarCarritoTotal.addEventListener("click", (e)=>{
+                e.preventDefault()
+                stockCarrito=[];
                 dibujarCarrito();
-            }
+                swal("El carrtito ha sido vaciado con exito")
+            })
+            
             
         }
     );
@@ -316,7 +336,7 @@ function dibujarCarrito(){
         contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Total de la reserva $ ${totalCarrito}, ${totalCantidad} carpas reservadas</th>`
     };
 
-    
+
     const reservarCarrito = document.querySelector("#modalFooterReserv");
 
     //confirmacion de la reserva (suspenso)
@@ -326,6 +346,7 @@ function dibujarCarrito(){
     //mensaje al reservar 
 
     function condiconalVacio(){
+
 //librerias sweet alert
             swal({
                 title: "Esta seguro que desea confirmar tu reservación",
