@@ -261,7 +261,7 @@ function dibujarCarrito(){
             
         const modalToggle = document.querySelector('#toggleMyModal');
 
-        modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"></i></span>`
+        modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"> ${totalProductos}</i></span>`
        
         totalProductos+=parseInt(elemento.cantidad);
         totalCantidad+=parseInt(elemento.cantidad) 
@@ -303,15 +303,28 @@ function dibujarCarrito(){
             
             borrarProducto.addEventListener("click", (e)=>{
                 
-                renglonCarrito.remove()
-                console.log("esto hace algo")
 
+                renglonCarrito.remove()
+                
+                let calcularTotal = parseInt(totalCarrito-=elemento.producto.precio)
+                console.log(calcularTotal)
+                let calcularCantidad = parseInt(totalCantidad-=elemento.cantidad)
+
+
+                if(calcularTotal !== 0){
+
+                    contenedorFooterCarrito.innerHTML=(`<th scope="row" colspan="5">Total de la reserva $ ${calcularTotal}, ${calcularCantidad} carpas reservadas</th>`)
+                    swal(`Eliminaste ${elemento.producto.nombre} del carrito`)
+
+
+                }else{
+                    contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>`;
+
+                }
                 
             })
-            // totalCarrito-=elemento.producto.precio
-            // totalCantidad-= elemento.cantidad
-            // contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Total de la reserva $ ${totalCarrito}, ${totalCantidad} carpas reservadas</th>`
-            
+
+            //Vaciar Carrito total
 
             let vaciarCarritoTotal = document.getElementById("modalFooterEmpty");
 
