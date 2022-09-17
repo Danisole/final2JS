@@ -21,6 +21,12 @@ body{
             @include section(flex, space-around, center);
             z-index: 10;
 
+            .btntoggleMyModal{
+                background-color: rgba(40, 118, 202, 0.808);
+                border-radius: 8px;
+            }
+
+
             .logo{
                 max-width: 70%;
             }
@@ -52,8 +58,7 @@ body{
 
         
     }
-  
-
+    
     .apiHolidays{
         background-color:rgba(191,157,129,1);
         max-height: 200vh;
@@ -74,7 +79,7 @@ body{
         .btnBuscarTuPais{
             width: 150px;
             height: 40px;
-            border-radius: 20px;
+            border-radius: 8px;
             color: #ffff;
             background-color: rgba(30, 82, 137, 0.808);
             &:hover{

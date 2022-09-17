@@ -7,6 +7,7 @@ const botonParaSubir = document.querySelector("button");
 const nombreUsuario = document.getElementById("usuario");
 const contenedor = document.getElementById("contenedorCarpas");
 const eliminar = document.getElementById("btnEliminar")
+
 //Api------------
 const containerHolidays = document.getElementById("apiHolidays")
 const containerApi = document.getElementById("containerApi")
@@ -250,21 +251,23 @@ function dibujarCarrito(){
     contenedorCarritoReservas.innerHTML = "";
 
     let totalCarrito = 0;
-    let totalProductos = 1;
     let totalCantidad = 0;
-
+    let totalProducto = 1;
 
     stockCarrito.forEach(
         (elemento) => {
 
         //agregar numero al boton Reservas
-            
+        
         const modalToggle = document.querySelector('#toggleMyModal');
 
-        modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"> ${totalProductos}</i></span>`
+        modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"> ${totalProducto}</i></span>`
        
-        totalProductos+=parseInt(elemento.cantidad);
+        totalProducto+=totalCantidad
         totalCantidad+=parseInt(elemento.cantidad) 
+
+
+        //crear el renglon con los datos a reservar
 
             let renglonCarrito = document.createElement("tr");
             renglonCarrito.classList.add("renglonCarrito");
@@ -273,7 +276,7 @@ function dibujarCarrito(){
             renglonCarrito.innerHTML = `
             <td>${elemento.producto.id}</td>
             <td>${elemento.producto.nombre}</td>
-            <td><input id="cantidad-producto-${elemento.producto.id}" type="number" value="${elemento.cantidad}" min="1" max="3" step="1" style="width:70px"</td>
+            <td><input id="cantidad-producto-${elemento.producto.id}" type="number" value="${elemento.cantidad}" min="1" max="3" step="1"></td>
             <td>${elemento.producto.precio}</td>
             <td>${elemento.producto.precio*elemento.cantidad}</td>
             <td>
@@ -286,6 +289,9 @@ function dibujarCarrito(){
             totalCarrito+=elemento.producto.precio*elemento.cantidad;
             contenedorCarritoReservas.append(renglonCarrito);
 
+            //aumentar las cantidades
+
+            
 
             
             let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
@@ -293,6 +299,9 @@ function dibujarCarrito(){
             inputCantidadProductos.addEventListener("change", (e)=>{
                 let nuevaCantidad = e.target.value;
                 elemento.cantidad = nuevaCantidad;
+                
+                console.log(nuevaCantidad)
+
 
                 dibujarCarrito();
             })
@@ -302,10 +311,10 @@ function dibujarCarrito(){
             let borrarProducto = document.getElementById(`btn${elemento.producto.id}`);
             
             borrarProducto.addEventListener("click", (e)=>{
-                
 
                 renglonCarrito.remove()
                 
+
                 let calcularTotal = parseInt(totalCarrito-=elemento.producto.precio)
                 console.log(calcularTotal)
                 let calcularCantidad = parseInt(totalCantidad-=elemento.cantidad)
@@ -315,12 +324,19 @@ function dibujarCarrito(){
 
                     contenedorFooterCarrito.innerHTML=(`<th scope="row" colspan="5">Total de la reserva $ ${calcularTotal}, ${calcularCantidad} carpas reservadas</th>`)
                     swal(`Eliminaste ${elemento.producto.nombre} del carrito`)
-
+                    modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"> ${calcularCantidad}</i></span>`
+                    
 
                 }else{
                     contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>`;
-
+                    modalToggle.innerHTML=`Reservas  <i class="fas fa-shopping-cart"></i>`
+                    swal(`Eliminaste ${elemento.producto.nombre} del carrito`)
+                    stockCarrito=[];
+                    dibujarCarrito();
+                    
                 }
+
+
                 
             })
 
@@ -329,9 +345,10 @@ function dibujarCarrito(){
             let vaciarCarritoTotal = document.getElementById("modalFooterEmpty");
 
             vaciarCarritoTotal.addEventListener("click", (e)=>{
-                e.preventDefault()
+                
                 stockCarrito=[];
                 dibujarCarrito();
+                modalToggle.innerHTML=`Reservas  <i class="fas fa-shopping-cart"></i>`
                 swal("El carrtito ha sido vaciado con exito")
             })
             
@@ -350,17 +367,19 @@ function dibujarCarrito(){
     };
 
 
+    
+
+    //confirmacion de la reserva
     const reservarCarrito = document.querySelector("#modalFooterReserv");
 
-    //confirmacion de la reserva (suspenso)
-
-    reservarCarrito.addEventListener("click", condiconalVacio);
-    
-    //mensaje al reservar 
-
-    function condiconalVacio(){
+    reservarCarrito.addEventListener("click", (e)=>{
 
 //librerias sweet alert
+
+        if(stockCarrito.length !== 0){
+
+            const modalToggle = document.querySelector('#toggleMyModal');
+
             swal({
                 title: "Esta seguro que desea confirmar tu reservación",
                 text: "Una vez confirmada se realizara el cobro de la estadía",
@@ -374,21 +393,27 @@ function dibujarCarrito(){
                 swal("¡Felicitaciones! Tu reserva ha sido confirmada, revisa tu casilla de mensajes para mas informacion", {
                     icon: "success",
                 });
-               
+                
                 stockCarrito=[];
                 dibujarCarrito();
-
+                modalToggle.innerHTML=`Reservas  <i class="fas fa-shopping-cart"></i>`
                 } else {
                 swal("Puedes seguir con tu proceso cuando quieras");
                 } 
                 
             });
-};   };   
+        }else{
+            
+            contenedorFooterCarrito.innerHTML = `<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>`;
+
+        }
+    });  
+ };   
 
 
 //-------------------------api rest-----------------------------//
 
-let pais = "ar" //prompt("ingrese pais")
+let pais = "ar" 
 let mes = 5 //prompt("ingrese mes")
 let posicion = 0
 
@@ -434,12 +459,15 @@ const displayInfo = (data) =>{
         swal("Debes seleccionar tu pais para continuar");
     }
 
-  
-
+    
+    
+    
 }
+
+
 const diasFeriados = async(pais, mes)=>{
 
-    let apiKey = "767f0ffc36711d37cd435865654382cca13ffbae"
+    let apiKey = "a9887ed847d5b689c4353ae1f4dc489ecce8ecf9"
     let api = `https://calendarific.com/api/v2/holidays?&api_key=${apiKey}&country=${pais}&month=${mes}&year=2022`
 
     const response = await fetch(api)
@@ -459,10 +487,4 @@ searchCity.addEventListener("submit", (e)=>{
     diasFeriados(searchInputCiudad.value, searchInputMes.value)
     
 } )
-
-
-
-
-
-
 

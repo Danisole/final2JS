@@ -57,6 +57,11 @@ body .headerReservas .navReservas {
   z-index: 10;
 }
 
+body .headerReservas .navReservas .btntoggleMyModal {
+  background-color: rgba(40, 118, 202, 0.808);
+  border-radius: 8px;
+}
+
 body .headerReservas .navReservas .logo {
   max-width: 70%;
 }
@@ -112,7 +117,7 @@ body .apiHolidays .h4Api {
 body .apiHolidays .btnBuscarTuPais {
   width: 150px;
   height: 40px;
-  border-radius: 20px;
+  border-radius: 8px;
   color: #ffff;
   background-color: rgba(30, 82, 137, 0.808);
 }
