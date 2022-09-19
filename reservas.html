@@ -110,36 +110,23 @@
 
             <div class="inputApi">
 
-                <form action="" class="searchCity" id="searchCity">
-                    <label type="text" for="" class="lableSearchCity d-flex justify-content-center gap-2 mt-5">Busca tu pais
-                        <!-- funciona con los codigos de los paises de dos letras -->
-
-                        <input  id="searchInputCiudad" class="searchInput1">
+                <form action="" class="searchCity d-flex justify-content-center gap-2 mt-5" id="searchCity">
+                    
+                    <select  id="searchInputCiudad" class="searchInput1 form-select w-25">
+                        <option selected>--Selecciona un Pais--</option>
+                    </select>
                         
-                        <select name="" id="searchInputMes" class="searchInput2">
-                            <option value="#">Selecciona un mes</option>
-                            <option value="1">Enero</option>
-                            <option value="2">Febrero</option>
-                            <option value="3">Marzo</option>
-                            <option value="4">Abril</option>
-                            <option value="5">Mayo</option>
-                            <option value="6">Junio</option>
-                            <option value="7">Julio</option>
-                            <option value="8">Agosto</option>
-                            <option value="9">Septiembre</option>
-                            <option value="10">Octubre</option>
-                            <option value="11">Noviembre</option>
-                            <option value="12">Diciembre</option>
+                        <select name="" id="searchInputMes" class="searchInput2 form-select w-25">
+                            <option selected>--Selecciona un mes--</option>
                         </select>
-
+                    
                         <button type="submit" class="btnBuscarTuPais">Buscar</button>
-                    </label>
+                    
                 </form>
             </div>
 
-            <div class="feriadosOn hidden" id="feriadosOn">
-            
-            </div>
+            <div class="feriadosOn" id="feriadosOn"></div>
+
         </div>
     </section>
 

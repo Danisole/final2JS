@@ -12,8 +12,8 @@ const eliminar = document.getElementById("btnEliminar")
 const containerHolidays = document.getElementById("apiHolidays")
 const containerApi = document.getElementById("containerApi")
 const searchCity = document.getElementById("searchCity")
-const searchInputCiudad = document.getElementById("searchInputCiudad")
 const searchInputMes = document.getElementById("searchInputMes")
+const searchInputCiudad = document.getElementById("searchInputCiudad")
 const feriadosOn = document.getElementById("feriadosOn")
 const feriadosInput = document.getElementById("feriadosInput")
 
@@ -211,8 +211,7 @@ function crearCard(producto){
     botonAgregar.onclick = (e) =>{
 
         stockCarrito.push(new StockCarrito(producto, 1));
-        
-        
+
         dibujarCarrito();
 
         swal({
@@ -276,7 +275,7 @@ function dibujarCarrito(){
             renglonCarrito.innerHTML = `
             <td>${elemento.producto.id}</td>
             <td>${elemento.producto.nombre}</td>
-            <td><input id="cantidad-producto-${elemento.producto.id}" type="number" value="${elemento.cantidad}" min="1" max="3" step="1"></td>
+            <td><input type="number" min="1" max="3" id="cantidad-producto-${elemento.producto.id}" value="${elemento.cantidad}"></td>
             <td>${elemento.producto.precio}</td>
             <td>${elemento.producto.precio*elemento.cantidad}</td>
             <td>
@@ -289,11 +288,8 @@ function dibujarCarrito(){
             totalCarrito+=elemento.producto.precio*elemento.cantidad;
             contenedorCarritoReservas.append(renglonCarrito);
 
-            //aumentar las cantidades
+            //acumulador cantidad
 
-            
-
-            
             let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
 
             inputCantidadProductos.addEventListener("change", (e)=>{
@@ -351,6 +347,10 @@ function dibujarCarrito(){
                 modalToggle.innerHTML=`Reservas  <i class="fas fa-shopping-cart"></i>`
                 swal("El carrtito ha sido vaciado con exito")
             })
+
+            //acumulador cantidad
+
+        
             
             
         }
@@ -417,33 +417,73 @@ let pais = "ar"
 let mes = 5 //prompt("ingrese mes")
 let posicion = 0
 
+
+function cargarPais(){
+    fetch('dataApiPaises.json')
+        .then(response => response.json())
+        .then(paises => {
+            paises.forEach(pais =>{
+                
+                searchInputCiudad.innerHTML+=`
+                    
+                    <option value="${pais.iso2}">${pais.nombre}</option>
+                
+                `;
+
+            });
+        })
+
+}
+cargarPais();
+
+function cargarMeses(){
+    fetch('dataApi.json')
+        .then(response => response.json())
+        .then(meses => {
+            meses.forEach(mes =>{
+                
+                searchInputMes.innerHTML+=`
+                    
+                    <option value="${mes.id}">${mes.mes}</option>
+                
+                `;
+
+                
+            });
+        })
+}
+cargarMeses();
+
+
+
 const displayInfo = (data) =>{
 
-    if(searchInputCiudad.value != "" || searchInputMes.value != ""){
-
         const infoInput = ()=>{
+
+            
+
             for(i=0; i<=data.response.holidays.length;i++){
             let dataName = data.response.holidays[i].name
             let dataDate = data.response.holidays[i].date.datetime.day
             let dataCountry =data.response.holidays[i].country.name
-            let dataCodigoPais = data.response.holidays[i].country.id
+            
 
             feriadosOn.innerHTML+=`
-            <table class="table table-bordered" id="table>
+            <table class="table table-bordered" id="table">
                     <thead>
                     <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Dia</th>
-                        <th scope="col">Pais</th>
+                        
+                        <th style="width: 300px" scope="col">Nombre</th>
+                        <th style="width: 300px" scope="col">Dia</th>
+                        <th style="width: 300px" scope="col">Pais</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         
-                        <td style="width: 300px; height: 20px"  scope="row">${dataName}</td>
-                        <td style="width: 300px; height: 20px" scope="row">${dataDate}</td>
-                        <td style="width: 300px; height: 20px" scope="row" >${dataCountry}</td>
+                        <td style="width: 300px" scope="row">${dataName}</td>
+                        <td style="width: 300px" scope="row">${dataDate}</td>
+                        <td style="width: 300px" scope="row" >${dataCountry}</td>
                     </tr>
                     </tbody>
             </table>
@@ -454,30 +494,24 @@ const displayInfo = (data) =>{
 
         infoInput()
 
-    }else{
+        
 
-        swal("Debes seleccionar tu pais para continuar");
-    }
-
-    
-    
-    
 }
 
 
 const diasFeriados = async(pais, mes)=>{
+ 
 
-    let apiKey = "a9887ed847d5b689c4353ae1f4dc489ecce8ecf9"
+    let apiKey = "8a4e725b331e93f1c68e1a931924cb79019a97ae"
     let api = `https://calendarific.com/api/v2/holidays?&api_key=${apiKey}&country=${pais}&month=${mes}&year=2022`
 
     const response = await fetch(api)
     const data  = await response.json()
-   // const err = console.log(err)  chequearlo
 
-    displayInfo(data)
-    
-   
+    displayInfo(data) 
+
 }
+
 
 searchCity.addEventListener("submit", (e)=>{
     e.preventDefault()
