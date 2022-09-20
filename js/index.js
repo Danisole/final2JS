@@ -1,39 +1,19 @@
 const d = document,
 w = window;
-let title = document.getElementById('title');
+const title = document.getElementById('title');
 const nav = document.querySelector('.nav');
 const logo = document.querySelector('.logo');
 const botonParaSubir = document.querySelector("button");
 const nombreUsuario = document.getElementById("usuario");
 const contenedor = document.getElementById("contenedorCarpas");
 const eliminar = document.getElementById("btnEliminar")
+const contenedorProductos = document.getElementById("contenedor-productos");
+const contenedorCarritoReservas = document.querySelector("#items");
+const contenedorFooterCarrito = document.getElementById("footer");
+//variable donde vamos a guardar los elementos 
+const carpaArray = [];
+let stockCarrito = [];
 
-//Api------------
-const containerHolidays = document.getElementById("apiHolidays")
-const containerApi = document.getElementById("containerApi")
-const searchCity = document.getElementById("searchCity")
-const searchInputMes = document.getElementById("searchInputMes")
-const searchInputCiudad = document.getElementById("searchInputCiudad")
-const feriadosOn = document.getElementById("feriadosOn")
-const feriadosInput = document.getElementById("feriadosInput")
-
-
-
-
-// window.addEventListener('scroll', (e) =>{
-//     let value = w.scrollY; 
-//     title.style.marginTop = value * .7 + 'px';
-//     nav.classList.toggle('active', window.scrollY > 0);
-//     logo.classList.toggle('active', window.scrollY > 0);
-// });
-
-
-
-// botonParaSubir.addEventListener("click", ()=>{
-
-//     window.scrollTo(0, 0);
-    
-// });
 
 // carpas constructor
 
@@ -49,7 +29,6 @@ class Carpas{
 
 }
 
-const carpaArray = [];
 
 //carrito constructor
 
@@ -64,11 +43,6 @@ class StockCarrito{
 
 //variable donde vamos a guardar los elementos 
 
-let stockCarrito = [];
-
-const contenedorProductos = document.getElementById("contenedor-productos");
-const contenedorCarritoReservas = document.querySelector("#items");
-const contenedorFooterCarrito = document.getElementById("footer");
 
 // carga de carpas
 
@@ -210,6 +184,8 @@ function crearCard(producto){
 
     botonAgregar.onclick = (e) =>{
 
+        
+
         stockCarrito.push(new StockCarrito(producto, 1));
 
         dibujarCarrito();
@@ -238,6 +214,8 @@ function crearCard(producto){
                 
             }
         });
+
+        
     }
 
     return carta
@@ -256,7 +234,7 @@ function dibujarCarrito(){
     stockCarrito.forEach(
         (elemento) => {
 
-        //agregar numero al boton Reservas
+            //agregar numero al boton Reservas
         
         const modalToggle = document.querySelector('#toggleMyModal');
 
@@ -288,16 +266,17 @@ function dibujarCarrito(){
             totalCarrito+=elemento.producto.precio*elemento.cantidad;
             contenedorCarritoReservas.append(renglonCarrito);
 
-            //acumulador cantidad
+            
+            //-----------------------Dont touch-------------//
 
             let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
 
+            
             inputCantidadProductos.addEventListener("change", (e)=>{
                 let nuevaCantidad = e.target.value;
                 elemento.cantidad = nuevaCantidad;
-                
-                console.log(nuevaCantidad)
 
+                
 
                 dibujarCarrito();
             })
@@ -332,7 +311,6 @@ function dibujarCarrito(){
                     
                 }
 
-
                 
             })
 
@@ -348,11 +326,7 @@ function dibujarCarrito(){
                 swal("El carrtito ha sido vaciado con exito")
             })
 
-            //acumulador cantidad
-
         
-            
-            
         }
     );
 
@@ -410,115 +384,4 @@ function dibujarCarrito(){
     });  
  };   
 
-
-//-------------------------api rest-----------------------------//
-
-let pais = "ar" 
-let mes = 5 //prompt("ingrese mes")
-let posicion = 0
-
-
-function cargarPais(){
-    fetch('dataApiPaises.json')
-        .then(response => response.json())
-        .then(paises => {
-            paises.forEach(pais =>{
-                
-                searchInputCiudad.innerHTML+=`
-                    
-                    <option value="${pais.iso2}">${pais.nombre}</option>
-                
-                `;
-
-            });
-        })
-
-}
-cargarPais();
-
-function cargarMeses(){
-    fetch('dataApi.json')
-        .then(response => response.json())
-        .then(meses => {
-            meses.forEach(mes =>{
-                
-                searchInputMes.innerHTML+=`
-                    
-                    <option value="${mes.id}">${mes.mes}</option>
-                
-                `;
-
-                
-            });
-        })
-}
-cargarMeses();
-
-
-
-const displayInfo = (data) =>{
-
-        const infoInput = ()=>{
-
-            
-
-            for(i=0; i<=data.response.holidays.length;i++){
-            let dataName = data.response.holidays[i].name
-            let dataDate = data.response.holidays[i].date.datetime.day
-            let dataCountry =data.response.holidays[i].country.name
-            
-
-            feriadosOn.innerHTML+=`
-            <table class="table table-bordered" id="table">
-                    <thead>
-                    <tr>
-                        
-                        <th style="width: 300px" scope="col">Nombre</th>
-                        <th style="width: 300px" scope="col">Dia</th>
-                        <th style="width: 300px" scope="col">Pais</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        
-                        <td style="width: 300px" scope="row">${dataName}</td>
-                        <td style="width: 300px" scope="row">${dataDate}</td>
-                        <td style="width: 300px" scope="row" >${dataCountry}</td>
-                    </tr>
-                    </tbody>
-            </table>
-            `
-            }  
-            
-        }
-
-        infoInput()
-
-        
-
-}
-
-
-const diasFeriados = async(pais, mes)=>{
- 
-
-    let apiKey = "8a4e725b331e93f1c68e1a931924cb79019a97ae"
-    let api = `https://calendarific.com/api/v2/holidays?&api_key=${apiKey}&country=${pais}&month=${mes}&year=2022`
-
-    const response = await fetch(api)
-    const data  = await response.json()
-
-    displayInfo(data) 
-
-}
-
-
-searchCity.addEventListener("submit", (e)=>{
-    e.preventDefault()
-    // console.log(searchInputCiudad.value)
-    // console.log(searchInputMes.value)
-    feriadosOn.innerHTML=""
-    diasFeriados(searchInputCiudad.value, searchInputMes.value)
-    
-} )
 

@@ -27,24 +27,21 @@ const validate =()=>{
     const pass = password.value.trim();
     const pass2 = password2.value.trim();
 
-    //---------------logueo-----------------//
+    window.location.replace("singUp.html")
 
-    let usuarioLocal = {
+     //---------------logueo-----------------//
+
+let usuarioLocal = {
         
-        user: user,
-        mail: mail,
-        pass: pass,
-        pass2: pass2
-    }
+    user: user,
+    mail: mail,
+    pass: pass,
+    pass2: pass2
+}
 
-    let jsonLocal = JSON.stringify(usuarioLocal);
-    localStorage.setItem("usuario", jsonLocal)
-    console.log("user add")
-
-    
-
-
-   
+let jsonLocal = JSON.stringify(usuarioLocal);
+localStorage.setItem("usuario", jsonLocal)
+console.log("user add")
 
 
     //comprobaciones
@@ -124,14 +121,4 @@ const inputError = (input, message)=>{
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
+ 
