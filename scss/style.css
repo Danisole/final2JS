@@ -605,7 +605,7 @@ body footer .containFooter .pFooter .nick:hover {
   color: #ff0054;
 }
 
-body .scroll-top-btn {
+body .btnWsp {
   position: fixed;
   z-index: 999;
   bottom: 1vh;
@@ -613,22 +613,22 @@ body .scroll-top-btn {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  font-size: 2rem;
+  font-size: 2.7rem;
   font-weight: bold;
-  background-color: #bf9d81;
-  color: black;
+  background-color: white;
+  color: #00bb2d;
   cursor: pointer;
   outline: 0;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
 
-body .scroll-top-btn:hover {
-  background-color: black;
+body .btnWsp:hover {
+  background-color: #00bb2d;
   color: white;
 }
 
-body .scroll-top-btn .hidden {
+body .btnWsp .hidden {
   visibility: hidden;
   opacity: 0;
 }

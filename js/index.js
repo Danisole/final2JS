@@ -234,14 +234,15 @@ function dibujarCarrito(){
     stockCarrito.forEach(
         (elemento) => {
 
+
             //agregar numero al boton Reservas
         
         const modalToggle = document.querySelector('#toggleMyModal');
 
-        modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"> ${totalProducto}</i></span>`
+        modalToggle.innerHTML=`<span class="badge text-bg-secondary">Reservas  <i class="fas fa-shopping-cart"> </i></span>`
        
         totalProducto+=totalCantidad
-        totalCantidad+=parseInt(elemento.cantidad) 
+        totalCantidad+=elemento.cantidad
 
 
         //crear el renglon con los datos a reservar
@@ -253,7 +254,7 @@ function dibujarCarrito(){
             renglonCarrito.innerHTML = `
             <td>${elemento.producto.id}</td>
             <td>${elemento.producto.nombre}</td>
-            <td><input type="number" min="1" max="3" id="cantidad-producto-${elemento.producto.id}" value="${elemento.cantidad}"></td>
+            <td id="cantidad-producto-${elemento.producto.id}">${elemento.cantidad}</td>
             <td>${elemento.producto.precio}</td>
             <td>${elemento.producto.precio*elemento.cantidad}</td>
             <td>
@@ -269,17 +270,17 @@ function dibujarCarrito(){
             
             //-----------------------Dont touch-------------//
 
-            let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
+            // let inputCantidadProductos = document.getElementById(`cantidad-producto-${elemento.producto.id}`);
 
             
-            inputCantidadProductos.addEventListener("change", (e)=>{
-                let nuevaCantidad = e.target.value;
-                elemento.cantidad = nuevaCantidad;
+            // inputCantidadProductos.addEventListener("change", (e)=>{
+            //     let nuevaCantidad = e.target.value;
+            //     elemento.cantidad = nuevaCantidad;
 
                 
 
-                dibujarCarrito();
-            })
+            //     dibujarCarrito();
+            // })
 
             //Boton eliminar
 

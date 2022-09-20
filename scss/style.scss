@@ -470,7 +470,7 @@ body{
         
     }
 
-    .scroll-top-btn{
+    .btnWsp{
         position: fixed;
         z-index: 999;
         bottom: 1vh;
@@ -478,15 +478,16 @@ body{
         width: 4rem;
         height: 4rem;
         border-radius: 50%;
-        font-size: 2rem;
+        font-size: 2.7rem;
         font-weight: bold;
-        background-color: rgba(191,157,129,1);
-        color: black;
+        background-color: white;
+        color: #00bb2d;
         cursor: pointer;
         outline: 0;
         transition: all 0.3s ease-out;
+        
         &:hover{
-            background-color: black;
+            background-color: #00bb2d;
             color: white;
         }
         .hidden{
